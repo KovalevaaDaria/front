@@ -1,5 +1,5 @@
 import React, {useEffect, useRef} from 'react';
-import NewQuestionItem from "../newQuestion/newQuestionItem";
+import NewQuestionItem from "../newQuestionItem/newQuestionItem";
 import "./newQuestionList.css"
 const NewQuestionList = ({questions, remove}) => {
     const ref = useRef(null)

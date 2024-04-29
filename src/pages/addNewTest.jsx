@@ -10,7 +10,7 @@ const AddNewTest = () => {
 
     const navigate = useNavigate();
 
-    const [questions, setQuestions] = useState([question])
+    const [questions, setQuestions] = useState([])
 
     const removeQuestion = (question, e) => {
         e.stopPropagation();
