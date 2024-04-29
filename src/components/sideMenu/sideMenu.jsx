@@ -12,7 +12,7 @@ const SideMenu = () => {
 
             <div className={"menu-list-container"}>
                 <NavLink className="menu-item-wrap"
-                    to="/courses/"
+                    to="/courses"
                     style={{textDecoration: "none"}}
                 >
                     {({ isActive}) => (

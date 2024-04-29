@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import "./lesson.css";
 import SideMenu from "../components/sideMenu/sideMenu";
 import NavBar from "../components/navBar/navBar";
@@ -57,24 +57,30 @@ const LessonPage = () => {
                                         <div className="lesson-page-content-form-description">
                                             <div className="lesson-page-content-form-description-header">Описание</div>
                                             <textarea className="lesson-page-content-form-description-input"></textarea>
-                                            <button
-                                                className="lesson-page-content-form-description-button">Редактировать
-                                            </button>
+                                            <div className="lesson-page-content-form-description-button-container">
+                                                <button
+                                                    className="lesson-page-content-form-description-button">Редактировать
+                                                </button>
+                                            </div>
+
                                         </div>
 
                                         <div className="lesson-page-content-form-materials">
                                             <div className="lesson-page-content-form-materials-header">Материалы</div>
 
                                             <NewMaterialFileList remove={removeMaterial} title={"..."}  materials={materials}/>
+                                            <div className="lesson-page-content-form-materials-button-container">
+                                                <button className="lesson-page-content-form-materials-button"
+                                                        type="submit"
+                                                        onClick={(e) => addMaterial(e)}>Добавить
+                                                </button>
+                                            </div>
 
-                                            <button className="lesson-page-content-form-materials-button" type="submit"
-                                                    onClick={(e) => addMaterial(e)}>Добавить
-                                            </button>
                                         </div>
                                     </div>
 
                                     <div className="lesson-page-content-form-tests">
-                                        <div className="lesson-page-content-form-tests-header">Тесты</div>
+                                    <div className="lesson-page-content-form-tests-header">Тесты</div>
                                         <div className="lesson-page-content-form-tests-files-list">
                                             <LessonList remove={removeLesson} title={"На данный момент тестов нет..."} lessons={lessons}/>
                                         </div>

@@ -1,9 +1,31 @@
-import React from "react";
+import React, {useState} from "react";
 import "./addNewTest.css"
 import {useNavigate} from "react-router-dom";
+import NewQuestionList from "../components/newQuestionList/newQuestionList";
+
+const question = {text: "text"}
+
 
 const AddNewTest = () => {
+
     const navigate = useNavigate();
+
+    const [questions, setQuestions] = useState([question])
+
+    const removeQuestion = (question, e) => {
+        e.stopPropagation();
+        setQuestions(questions.filter(q => q.id !== question.id))
+    }
+
+    const addQuestion = (e) => {
+        e.preventDefault();
+        const newQuestion = {
+            id: Date.now(),
+            title: `Урок ${questions.length + 1}`,
+        }
+        setQuestions([...questions, newQuestion])
+    }
+
 
     return (
         <div className="add-new-test-wrapp">
@@ -23,21 +45,17 @@ const AddNewTest = () => {
                                 <div className="add-new-test-form-content-input-deadline-title">
                                     <p className="add-new-test-form-content-deadline-title">Дата дедлайна</p>
                                 </div>
-                                <input autoComplete="on" className="add-new-test-form-content-input-deadline-input"
+                                <input type={"datetime-local"} autoComplete="on"
+                                       className="add-new-test-form-content-input-deadline-input"
                                        placeholder="Дедлайн"></input>
                             </div>
                         </div>
                     </div>
-
-                    <div className="add-new-test-form-container-list">
-
-
-
-
-                    </div>
-
+                    <NewQuestionList remove={removeQuestion} questions={questions}/>
                     <div className="add-new-test-form-container-button">
-                        <button className="add-new-question-test-button">Добавить вопрос</button>
+                        <button className="add-new-question-test-button"
+                                onClick={(e) => addQuestion(e)}>Добавить вопрос
+                        </button>
                     </div>
                     <div className="add-new-test-button-container">
                         <button className="add-new-test-button" type="submit"

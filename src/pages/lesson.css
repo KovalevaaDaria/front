@@ -17,6 +17,8 @@
 }
 
 .lesson-page-content-form {
+    display: flex;
+    justify-content: center;
     background: #ffffff;
     max-width: 100%;
     margin-top: 20px;
@@ -26,17 +28,23 @@
 }
 
 .lesson-page-content-form-container {
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
     padding: 0 65px;
 }
 
 .lesson-page-content-form-row {
+    gap: 77px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
 }
 
 .lesson-page-content-form-description {
+    width: 100%;
     display: flex;
     flex-direction: column;
     max-width: 605px;
@@ -64,7 +72,6 @@
 
 .lesson-page-content-form-description-button {
     margin-top: 15px;
-    margin-left: 457px;
     width: 148px;
     height: 40px;
     font-weight: bold;
@@ -76,6 +83,7 @@
 }
 
 .lesson-page-content-form-materials {
+    width: 100%;
     display: flex;
     flex-direction: column;
     max-width: 328px;
@@ -89,9 +97,18 @@
     font-weight: bold;
 }
 
+.lesson-page-content-form-description-button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.lesson-page-content-form-materials-button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .lesson-page-content-form-materials-button {
     margin-top: 15px;
-    margin-left: 180px;
     width: 148px;
     height: 40px;
     font-weight: bold;
