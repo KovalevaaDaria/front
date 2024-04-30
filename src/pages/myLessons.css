@@ -36,7 +36,10 @@
     flex-direction: column;
     border-radius: 14px;
     color: white;
-    background: #4880FF;
+    background-image: url("../../public/img/background_my_lessons.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 .my-lessons-page-content-form-header {
