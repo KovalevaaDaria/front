@@ -14,7 +14,7 @@ const NewQuestionList = ({questions, remove}) => {
         <div className="add-new-test-form-container-list"
              ref={ref}>
             {questions.map((question, index) =>
-                <NewQuestionItem ref={ref} remove={remove} number={index + 1} question={question} key={question.id}/>
+                <NewQuestionItem remove={remove} number={index + 1} question={question} key={question.id}/>
             )}
         </div>
     );

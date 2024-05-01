@@ -3,7 +3,7 @@ import "./newQuestionItem.css"
 
 const NewQuestionItem = (props) => {
     return (
-        <div className="add-new-test-form-container-list-item"  ref={props.ref}>
+        <div className="add-new-test-form-container-list-item">
             <div className="add-new-test-form-container-list-item-columns-container">
                 <div className="add-new-test-form-container-list-item-column-1">
                     <div className="add-new-test-form-container-list-item-column-1-header">

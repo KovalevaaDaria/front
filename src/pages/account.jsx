@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import SideMenu from "../components/sideMenu/sideMenu";
 import NavBar from "../components/navBar/navBar";
 import "./account.css"
 import {useNavigate} from "react-router-dom";
+import {AuthContext} from "../context/AuthContext";
 
 const accountData = {
     name: "Дарья",
@@ -18,6 +19,8 @@ const Account = () => {
 
     const [account, setAccount] = useState(accountData)
     const [checkData, setCheckData] = useState(false)
+
+    const {setIsAuth} = useContext(AuthContext);
 
     const checkIfValid = () => {
         if ( JSON.stringify(account) === JSON.stringify(accountData)) {
@@ -51,7 +54,11 @@ const Account = () => {
                     <div className="account-page-content">
                         <div className="account-page-content-header">
                             <h1 className="account-page-title">Личный кабинет</h1>
-                            <button className="account-page-button-logout" onClick={() => navigate("/")}>Выйти</button>
+                            <button className="account-page-button-logout" onClick={() => {
+                                setIsAuth(false);
+                                localStorage.removeItem('auth')
+                                navigate("/")
+                            }}>Выйти</button>
                         </div>
 
                         <div className="account-page-content-form">

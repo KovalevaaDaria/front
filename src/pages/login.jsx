@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import "./login.css";
+import {AuthContext} from "../context/AuthContext";
 
 const Login = () => {
     const navigate = useNavigate();
-
+    const {setIsAuth} = useContext(AuthContext);
     return (
         <div className="root-img">
             <div className="wrapper">
@@ -27,7 +28,11 @@ const Login = () => {
                     </div>
                     <div className="log_in_form__button">
                         <button className="log_in_form__button__button" type="submit"
-                                onClick={() => navigate("/courses")}>Войти
+                                onClick={() => {
+                                    setIsAuth(true);
+                                    localStorage.setItem('auth', 'true');
+                                    navigate("/courses");
+                                }}>Войти
                         </button>
                     </div>
                     <div className="log_in_form__create">
