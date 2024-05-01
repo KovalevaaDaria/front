@@ -2,11 +2,13 @@ import React, {useState} from 'react';
 import SideMenu from "../components/sideMenu/sideMenu";
 import NavBar from "../components/navBar/navBar";
 import "./myLessons.css"
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import LessonList from "../components/lessonList/lessonList";
-import lesson from "./lesson";
+import slugger from '../slugger';
 
 const MyLessons = () => {
+    const params = useParams();
+    console.log(params);
     const navigate = useNavigate();
     const [lessons, setLessons] = useState([]);
 
@@ -20,7 +22,9 @@ const MyLessons = () => {
         const newLesson = {
             id: Date.now(),
             title: `Урок ${lessons.length + 1}`,
+            nav: slugger(`Урок ${lessons.length + 1}`)
         }
+        console.log(newLesson)
         setLessons([...lessons, newLesson])
     }
 
@@ -28,7 +32,7 @@ const MyLessons = () => {
             <div className="page-header">
                 <SideMenu/>
                 <div className="content">
-                    <NavBar/>
+                    <NavBar course={params.course}/>
                     <div className="my-lessons-page-wrap">
                         <div className="my-lessons-page-content">
                             <div className="my-lessons-page-content-header">

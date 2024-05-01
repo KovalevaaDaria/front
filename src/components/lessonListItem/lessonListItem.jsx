@@ -1,12 +1,11 @@
 import React from 'react';
-import lessonListItem from './lessonListItem.css';
 import {useNavigate} from "react-router-dom";
 
 const LessonListItem = (props) => {
     const navigate = useNavigate();
 
     return (
-        <div className="post" onClick={() => navigate("/courses/my-lessons/lesson")}>
+        <div className="post" onClick={() => navigate(props.lesson.nav)}>
             <div className="post__content">
                 <div className="my-lesson-list-item-text">{props.lesson.title}</div>
                 <div>

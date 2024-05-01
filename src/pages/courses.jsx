@@ -1,12 +1,34 @@
-import React from 'react';
+import React, {useState} from 'react';
 import SideMenu from "../components/sideMenu/sideMenu";
 import NavBar from "../components/navBar/navBar";
-import {Redirect, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import "./courses.css"
-import CourseItem from "../components/curseList/courseItem";
+import CardList from "../components/cardList/cardList";
+import slugger from "../slugger";
+const courseList = [{name: "Математический анализ", img: "https://i.ibb.co/JkW4tYy/Image-2.jpg", nav: "my-lessons", id: Date.now()}]
 
 const Courses = () => {
     const navigate = useNavigate();
+
+    const [courses, setCourses] = useState(courseList);
+
+    const removeCourse = (course, e) => {
+        e.stopPropagation();
+        setCourses(courses.filter(c=>c.id !== course.id))
+    }
+
+    const addCourse = (e) => {
+        e.preventDefault();
+        //post -> response
+
+        const newCourse = {
+            name: "Математический анализ", // response.data.title
+            img: "https://i.ibb.co/JkW4tYy/Image-2.jpg", //response.data.img
+            nav: slugger("Математический анализ"), //slugger(response.data.title)
+            id: Date.now() // response.data.uuid
+        }
+        setCourses([...courses, newCourse])
+    }
 
     return (
         <div className="page-header">
@@ -17,17 +39,10 @@ const Courses = () => {
                     <div className="courses-page-content">
                         <div className="courses-page-content-header">
                             <h1 className="courses-page-title">Курсы</h1>
-                            <button className="courses-page-button-add-course" onClick={()=> navigate("/courses")}>Добавить курс</button>
+                            <button className="courses-page-button-add-course" onClick={addCourse}>Добавить курс</button>
                         </div>
                         <div className="courses-page-content-layout">
-                            <div className="courses-page-content-layout-list">
-                                <CourseItem/>
-                                <CourseItem/>
-                                <CourseItem/>
-                                <CourseItem/>
-                                <CourseItem/>
-                                <CourseItem/>
-                            </div>
+                            <CardList cards={courses} remove={removeCourse} title={"На данный момент курсов нет..."}/>
 
                         </div>
                     </div>

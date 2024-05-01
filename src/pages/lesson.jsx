@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import "./lesson.css";
 import SideMenu from "../components/sideMenu/sideMenu";
 import NavBar from "../components/navBar/navBar";
@@ -7,6 +7,9 @@ import LessonList from "../components/lessonList/lessonList";
 import NewMaterialFileList from "../components/newMaterialFileList/newMaterialFileList";
 
 const LessonPage = () => {
+    const params = useParams();
+    console.log(params);
+
     const navigate = useNavigate();
 
     const [materials, setMaterials] = useState([]);
@@ -21,6 +24,7 @@ const LessonPage = () => {
         const newMaterial = {
             id: Date.now(),
             title: `Лекция ${materials.length + 1}.pdf`,
+            url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
         }
         setMaterials([...materials, newMaterial])
     }
@@ -37,7 +41,7 @@ const LessonPage = () => {
         e.preventDefault();
         const newLesson = {
             id: Date.now(),
-            title: `Урок ${lessons.length + 1}`,
+            title: `Тест ${lessons.length + 1}`,
         }
         setLessons([...lessons, newLesson])
     }
@@ -47,7 +51,7 @@ const LessonPage = () => {
             <div className="page-header">
                 <SideMenu/>
                 <div className="content">
-                    <NavBar/>
+                    <NavBar course={params.course}/>
                     <div className="lesson-page-content">
                         <div className="lessons-page-content-container">
                             <div className="lesson-page-content-header">Урок 1</div>
@@ -85,11 +89,11 @@ const LessonPage = () => {
                                             <LessonList remove={removeLesson} title={"На данный момент тестов нет..."} lessons={lessons}/>
                                         </div>
                                         <div className="lesson-page-content-form-test-button-container">
-                                            {/*<button className="lesson-page-content-form-test-button" onClick={addLesson}>Добавить тест*/}
-                                            {/*</button>*/}
+                                            <button className="lesson-page-content-form-test-button" onClick={addLesson}>Добавить тест
+                                            </button>
 
                                             <button className="lesson-page-content-form-test-button"
-                                                    onClick={() => navigate("/courses/my-lessons/lesson/add-new-test")}>Добавить тест
+                                                    onClick={() => navigate("add-new-test")}>Добавить тест
                                             </button>
                                         </div>
                                     </div>

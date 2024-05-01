@@ -18,10 +18,10 @@ export default function App() {
             <Route path={"login"} element={<Login/>}/>
             <Route path={"create-account"} element={<CreateAccount/>}/>
             <Route path={"courses"} element={<Courses/>}/>
-            <Route path={"courses/my-lessons"} element={<MyLessons/>}/>
-            <Route path={"courses/my-lessons/lesson"} element={<LessonPage/>}/>
-            <Route path={"courses/my-lessons/lesson/add-new-test"} element={<AddNewTest/>}/>
-            <Route path={"courses/analyz"} element={<Analyz/>}/>
+            <Route path={"courses/:course/analytics"} element={<Analyz/>}/>
+            <Route path={"courses/:course/lessons"} element={<MyLessons/>}/>
+            <Route path={"courses/:course/lessons/:lesson"} element={<LessonPage/>}/>
+            <Route path={"courses/:course/lessons/:lesson/:test"} element={<AddNewTest/>}/>
             <Route path={"account"} element={<Account/>}/>
         </Routes>
       </BrowserRouter>

@@ -35,4 +35,11 @@ nav a {
 
 .nav-bar-image {
     padding-right: 30px;
+    content: url(../../../public/img/photo.svg);
+    border-radius: 50px;
+    height: 44px;
+    width: 44px;
+    object-fit: cover;
+    object-position: top;
+    overflow: hidden;
 }
