@@ -4,12 +4,13 @@ import NavBar from "../components/navBar/navBar";
 import {useNavigate} from "react-router-dom";
 import "./courses.css"
 import CardList from "../components/cardList/cardList";
-import slugger from "../slugger";
+import MyModal from "../components/myModal/myModal";
+import CourseForm from "../components/courseForm/courseForm";
 const courseList = [{name: "Математический анализ", img: "https://i.ibb.co/JkW4tYy/Image-2.jpg", nav: "my-lessons", id: Date.now()}]
 
 const Courses = () => {
     const navigate = useNavigate();
-
+    const [modal, setModal] = useState(false);
     const [courses, setCourses] = useState(courseList);
 
     const removeCourse = (course, e) => {
@@ -17,29 +18,26 @@ const Courses = () => {
         setCourses(courses.filter(c=>c.id !== course.id))
     }
 
-    const addCourse = (e) => {
-        e.preventDefault();
-        //post -> response
 
-        const newCourse = {
-            name: "Математический анализ", // response.data.title
-            img: "https://i.ibb.co/JkW4tYy/Image-2.jpg", //response.data.img
-            nav: slugger("Математический анализ"), //slugger(response.data.title)
-            id: Date.now() // response.data.uuid
-        }
+    const createCourse = (newCourse) => {
+        newCourse = {...newCourse, img: "https://i.ibb.co/JkW4tYy/Image-2.jpg"}
         setCourses([...courses, newCourse])
+        setModal(false)
     }
 
     return (
         <div className="page-header">
             <SideMenu/>
+            <MyModal visible={modal} setVisible={setModal}>
+                <CourseForm create={createCourse}/>
+            </MyModal>
             <div className="content">
                 <NavBar hasText={false}/>
                 <div className="courses-page-wrap">
                     <div className="courses-page-content">
                         <div className="courses-page-content-header">
                             <h1 className="courses-page-title">Курсы</h1>
-                            <button className="courses-page-button-add-course" onClick={addCourse}>Добавить курс</button>
+                            <button className="courses-page-button-add-course" onClick={() => setModal(true)}>Добавить курс</button>
                         </div>
                         <div className="courses-page-content-layout">
                             <CardList cards={courses} remove={removeCourse} title={"На данный момент курсов нет..."}/>

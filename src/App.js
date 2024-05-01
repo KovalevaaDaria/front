@@ -21,7 +21,7 @@ export default function App() {
             <Route path={"courses/:course/analytics"} element={<Analyz/>}/>
             <Route path={"courses/:course/lessons"} element={<MyLessons/>}/>
             <Route path={"courses/:course/lessons/:lesson"} element={<LessonPage/>}/>
-            <Route path={"courses/:course/lessons/:lesson/:test"} element={<AddNewTest/>}/>
+            <Route path={"courses/:course/lessons/:lesson/add-new-test"} element={<AddNewTest/>}/>
             <Route path={"account"} element={<Account/>}/>
         </Routes>
       </BrowserRouter>

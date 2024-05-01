@@ -8,9 +8,9 @@ const accountData = {
     name: "Дарья",
     surname: "Ковалева",
     patronymic: "Максимовна",
-    email: "jaskolski.brent@yahoo.com",
-    group: "-",
-    role: "BEBRA"
+    email: "love.iu7@bmstu.ru",
+    group: "♡ИУ7♡",
+    role: "♡ИУ7♡"
 }
 
 const Account = () => {

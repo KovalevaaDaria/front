@@ -7,6 +7,7 @@ import LessonList from "../components/lessonList/lessonList";
 import NewMaterialFileList from "../components/newMaterialFileList/newMaterialFileList";
 
 const LessonPage = () => {
+
     const params = useParams();
     console.log(params);
 
@@ -41,10 +42,12 @@ const LessonPage = () => {
         e.preventDefault();
         const newLesson = {
             id: Date.now(),
-            title: `Тест ${lessons.length + 1}`,
+            title: `Тест ${lessons.length + 1}`
         }
         setLessons([...lessons, newLesson])
     }
+
+
 
 
     return (
@@ -53,6 +56,7 @@ const LessonPage = () => {
                 <div className="content">
                     <NavBar course={params.course}/>
                     <div className="lesson-page-content">
+
                         <div className="lessons-page-content-container">
                             <div className="lesson-page-content-header">Урок 1</div>
                             <div className="lesson-page-content-form">
@@ -99,7 +103,7 @@ const LessonPage = () => {
                                     </div>
                                     <div className="lesson-page-content-form-button-container">
                                     <button className="lesson-page-content-button"
-                                                onClick={() => navigate("/courses/my-lessons")}>Сохранить
+                                                onClick={() => navigate("/courses")}>Сохранить
                                         </button>
                                     </div>
                                 </div>

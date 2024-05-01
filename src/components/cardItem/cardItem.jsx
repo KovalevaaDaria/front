@@ -14,7 +14,7 @@ const CardItem = (props) => {
                 <div className="card-item-body-header">
                     {props.card.name}
                 </div>
-                <button className="card-item-body-button" onClick={() => navigate(props.card.nav+'/lessons')}>
+                <button className="card-item-body-button" onClick={() => navigate(props.card.id+'/lessons')}>
                     Перейти
                 </button>
             </div>

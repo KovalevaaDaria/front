@@ -27,7 +27,7 @@ const Login = () => {
                     </div>
                     <div className="log_in_form__button">
                         <button className="log_in_form__button__button" type="submit"
-                                onClick={() => navigate("/courses/my-lessons")}>Войти
+                                onClick={() => navigate("/courses")}>Войти
                         </button>
                     </div>
                     <div className="log_in_form__create">
