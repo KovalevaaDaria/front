@@ -14,7 +14,7 @@ export const publicRoutes = [
     {path: '/', component: <MainBaumanClass/>, exact: true},
     {path: '/login', component: <Login/>, exact: true},
     {path: '/create-account', component: <CreateAccount/>, exact: true},
-    {path: '*', component: <Navigate to={'/login'} replace/>, exact: true},
+    {path: '*', component: <Navigate to={'/login'} replace={false}/>, exact: true},
 ]
 
 export const privateRoutes = [
@@ -24,5 +24,5 @@ export const privateRoutes = [
     {path: '/courses/:course/lessons/:lesson', component: <LessonPage/>, exact: true},
     {path: '/courses/:course/lessons/:lesson/add-new-test', component: <AddNewTest/>, exact: true},
     {path: '/account', component: <Account/>, exact: true},
-    {path: '*', component: <Navigate to={'/courses'} replace/>, exact: true},
+    {path: '*', component: <Navigate to={'/courses'} replace={true}/>, exact: true},
 ]

@@ -28,10 +28,11 @@ const Login = () => {
                     </div>
                     <div className="log_in_form__button">
                         <button className="log_in_form__button__button" type="submit"
-                                onClick={() => {
+                                onClick={(e) => {
+                                    e.preventDefault();
                                     setIsAuth(true);
                                     localStorage.setItem('auth', 'true');
-                                    navigate("/courses");
+                                    navigate('/courses', {replace: true});
                                 }}>Войти
                         </button>
                     </div>

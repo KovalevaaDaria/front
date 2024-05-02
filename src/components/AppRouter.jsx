@@ -1,13 +1,16 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {AuthContext} from "../context/AuthContext";
-import {Route, Routes} from "react-router-dom";
+import {Route, Routes, useLocation} from "react-router-dom";
 import {privateRoutes, publicRoutes} from "../router/routes";
 
 const AppRouter = () => {
+    const location = useLocation();
+    useEffect(() => {
+        console.log(isAuth, location);
+    }, [location]);
     const {isAuth, isLoading} = useContext(AuthContext);
     if (isLoading) return <></>
 
-    console.log(isAuth);
     return (
         isAuth
             ?
