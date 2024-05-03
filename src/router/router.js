@@ -7,7 +7,7 @@ import MyLessons from "../pages/myLessons";
 import LessonPage from "../pages/lesson";
 import AddNewTest from "../pages/addNewTest";
 import Account from "../pages/account";
-import {createBrowserRouter, json, Navigate, Outlet} from "react-router-dom";
+import {createBrowserRouter, Navigate, Outlet} from "react-router-dom";
 import Error from "../pages/error";
 import React from "react";
 import {lessonsLoader} from "../API/loaders/lessonsLoader";
