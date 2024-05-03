@@ -2,29 +2,31 @@ import React, {useState} from 'react';
 import SideMenu from "../components/sideMenu/sideMenu";
 import NavBar from "../components/navBar/navBar";
 import "./myLessons.css"
-import {useNavigate, useParams} from "react-router-dom";
+import {useLoaderData, useNavigate, useParams} from "react-router-dom";
 import LessonList from "../components/lessonList/lessonList";
 import LessonForm from "../components/lessonForm/lessonForm";
 import MyModal from "../components/myModal/myModal";
 
 
 const MyLessons = () => {
+    const data = useLoaderData();
+
     const [modal, setModal] = useState(false);
 
     const params = useParams();
-    console.log(params);
+
     const navigate = useNavigate();
-    const [lessons, setLessons] = useState([]);
+    const [lessons, setLessons] = useState(data);
 
     const removeLesson = (lesson, e) => {
         e.stopPropagation();
-        setLessons(lessons.filter(l=>l.id !== lesson.id))
+        setLessons(lessons.filter(l=>l.uuid !== lesson.uuid))
     }
 
     const addLesson = (e) => {
         e.preventDefault();
         const newLesson = {
-            id: Date.now(),
+            uuid: Date.now(),
             title: `Урок ${lessons.length + 1}`,
         }
         setLessons([...lessons, newLesson])

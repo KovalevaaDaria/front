@@ -1,8 +1,9 @@
 import './App.css';
-import {BrowserRouter} from "react-router-dom";
+import {Navigate, RouterProvider} from "react-router-dom";
 import {AuthContext} from "./context/AuthContext";
-import {useEffect, useState} from "react";
-import AppRouter from "./components/AppRouter";
+import React, {useEffect, useState} from "react";
+import {router} from "./router/routes";
+import Error from "./pages/error";
 
 export default function App() {
     const [isAuth, setIsAuth] = useState(false)
@@ -15,15 +16,15 @@ export default function App() {
         setIsLoading(false);
     }, []);
 
+    if (isLoading) return <></>
+
     return (
         <AuthContext.Provider value={{
             isAuth,
             setIsAuth,
             isLoading
         }}>
-            <BrowserRouter>
-                <AppRouter/>
-            </BrowserRouter>
+            <RouterProvider router={router(isAuth)} fallbackElement={<Error />} />
         </AuthContext.Provider>
     );
 }

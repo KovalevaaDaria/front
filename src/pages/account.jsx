@@ -40,11 +40,6 @@ const Account = () => {
         checkIfValid()
     }, [account]);
 
-    //запрос в бд за данными => account
-    // useEffect(() => {
-    //     setAccount(fetch()) // функция вызова
-    // }, []);
-
     return (
         <div className="page-header">
             <SideMenu/>
@@ -134,6 +129,7 @@ const Account = () => {
                                                    placeholder="Преподаватель"
                                                    style={account.role === "" ? {borderColor: "#EF3826"} : null}
                                                    value={account.role}
+                                                   readOnly={true}
                                             />
                                         </div>
                                     </div>

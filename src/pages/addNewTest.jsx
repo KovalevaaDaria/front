@@ -59,7 +59,7 @@ const AddNewTest = () => {
                     </div>
                     <div className="add-new-test-button-container">
                         <button className="add-new-test-button" type="submit"
-                                onClick={() => navigate("/courses/my-lessons/lesson")}>Добавить тест
+                                onClick={() => navigate(-1)}>Добавить тест
                         </button>
                     </div>
                 </div>

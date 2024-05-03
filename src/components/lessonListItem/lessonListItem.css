@@ -14,16 +14,11 @@
     border: 2px solid #4880FF;
 }
 
-/*.post:hover{*/
-/*    .my-lesson-remove-button[hover="true"] {*/
-/*        border: 2px solid #4880FF;*/
-/*    }*/
-/*    .my-lesson-remove-button[hover="false"] {*/
-/*        .post {*/
-/*            border: 2px solid #4880FF;*/
-/*        }*/
-/*    }*/
-/*}*/
+.my-lesson-remove-button:hover {
+    border: 2px solid #EF3826;
+}
+
+
 
 .my-lesson-remove-button {
     background-image: url(../../../public/img/remove_bin_icon.svg);

@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
 import SideMenu from "../components/sideMenu/sideMenu";
 import NavBar from "../components/navBar/navBar";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import "./courses.css"
 import CardList from "../components/cardList/cardList";
 import MyModal from "../components/myModal/myModal";
 import CourseForm from "../components/courseForm/courseForm";
-const courseList = [{name: "Математический анализ", img: "https://i.ibb.co/JkW4tYy/Image-2.jpg", nav: "my-lessons", id: Date.now()}]
+
+const courseList = [
+    {name: "Математический анализ", img: "https://i.ibb.co/JkW4tYy/Image-2.jpg", nav: "my-lessons", id: Date.now()}]
 
 const Courses = () => {
     const navigate = useNavigate();
