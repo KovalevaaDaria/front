@@ -1,8 +1,8 @@
 import './App.css';
-import {Navigate, RouterProvider} from "react-router-dom";
+import {RouterProvider} from "react-router-dom";
 import {AuthContext} from "./context/AuthContext";
 import React, {useEffect, useState} from "react";
-import {router} from "./router/routes";
+import {router} from "./router/router";
 import Error from "./pages/error";
 
 export default function App() {
