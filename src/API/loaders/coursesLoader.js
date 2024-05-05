@@ -1,39 +1,35 @@
 import {json} from "react-router-dom";
 
 
-export const lessonsLoader = async ({params, authData}) => {
-    console.log(`fetching api data from course ${params.course} using uuid ${authData.userUuid}}`);
+export const coursesLoader = async ({authData}) => {
+    console.log(`fetching api data for courses using uuid ${authData.userUuid}}`);
     //API REQUEST
     // const resp = CourseService.getAll({})
     const response = json(
         [
             {
                 "uuid": "f78105fe-350b-4e13-8058-335d55c89a1a",
-                "title": "Математический Анализ",
+                "title": "Математический Анализ 1",
                 "description": "что-то важное",
-                "serialNumber": 1,
-                "groupUuid": "f78105fe-350b-4e13-8058-335d55c89a1a"
+                "img": "https://i.ibb.co/JkW4tYy/Image-2.jpg",
             },
             {
                 "uuid": "f78105fe-350b-4e13-8058-335d55c89a2a",
-                "title": "Математический Анализ",
+                "title": "Математический Анализ 2",
                 "description": "что-то важное",
-                "serialNumber": 2,
-                "groupUuid": "f78105fe-350b-4e13-8058-335d55c89a1a"
+                "img": "https://i.ibb.co/JkW4tYy/Image-2.jpg",
             },
             {
                 "uuid": "f78105fe-350b-4e13-8058-335d55c89a3a",
-                "title": "Математический Анализ",
+                "title": "Математический Анализ 3",
                 "description": "что-то важное",
-                "serialNumber": 3,
-                "groupUuid": "f78105fe-350b-4e13-8058-335d55c89a1a"
+                "img": "https://i.ibb.co/JkW4tYy/Image-2.jpg",
             },
             {
                 "uuid": "f78105fe-350b-4e13-8058-335d55c89a4a",
-                "title": "Математический Анализ",
+                "title": "Математический Анализ 4",
                 "description": "что-то важное",
-                "serialNumber": 3,
-                "groupUuid": "f78105fe-350b-4e13-8058-335d55c89a1a"
+                "img": "https://i.ibb.co/JkW4tYy/Image-2.jpg",
             },
         ], {status: 200}
     );

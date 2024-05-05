@@ -11,8 +11,9 @@ import {createBrowserRouter, Navigate, Outlet} from "react-router-dom";
 import Error from "../pages/error";
 import React from "react";
 import {lessonsLoader} from "../API/loaders/lessonsLoader";
+import {coursesLoader} from "../API/loaders/coursesLoader";
 
-export const router = (isLoggedIn) => createBrowserRouter([
+export const router = (isLoggedIn, authData, setAuthData) => createBrowserRouter([
 
     {
         path: '/',
@@ -27,14 +28,16 @@ export const router = (isLoggedIn) => createBrowserRouter([
         path: '/courses',
         element: isLoggedIn ? <Outlet/> : <Navigate to="/login"/>,
         children: [
-            { path: '', element: <Courses/>},
+            { path: '', element: <Courses/>, loader: async () => {
+                    return coursesLoader({authData})},},
             {
                 path: ':course', element: <Outlet/>,
                 children: [
                     {path: 'analytics', element: <Analyz/>},
                     {path: 'lessons', component: <Outlet/>,
                         children: [
-                            {path: '', element: <MyLessons/>, loader: lessonsLoader,
+                            {path: '', element: <MyLessons/>, loader: async ({ params }) => {
+                                    return lessonsLoader({params, authData})},
                                 errorElement: <Navigate to='/courses'/>,
                             },
 

@@ -1,23 +1,21 @@
 import React, {useState} from 'react';
 import SideMenu from "../components/sideMenu/sideMenu";
 import NavBar from "../components/navBar/navBar";
-import {useNavigate, useParams} from "react-router-dom";
+import {useLoaderData, useNavigate} from "react-router-dom";
 import "./courses.css"
 import CardList from "../components/cardList/cardList";
 import MyModal from "../components/myModal/myModal";
 import CourseForm from "../components/courseForm/courseForm";
 
-const courseList = [
-    {name: "Математический анализ", img: "https://i.ibb.co/JkW4tYy/Image-2.jpg", nav: "my-lessons", id: Date.now()}]
-
 const Courses = () => {
+    const data = useLoaderData();
     const navigate = useNavigate();
     const [modal, setModal] = useState(false);
-    const [courses, setCourses] = useState(courseList);
+    const [courses, setCourses] = useState(data);
 
     const removeCourse = (course, e) => {
         e.stopPropagation();
-        setCourses(courses.filter(c=>c.id !== course.id))
+        setCourses(courses.filter(c=>c.uuid !== course.uuid))
     }
 
 

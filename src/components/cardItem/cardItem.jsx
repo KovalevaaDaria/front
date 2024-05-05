@@ -12,9 +12,9 @@ const CardItem = (props) => {
             </div>
             <div className="card-item-body">
                 <div className="card-item-body-header">
-                    {props.card.name}
+                    {props.card.title}
                 </div>
-                <button className="card-item-body-button" onClick={() => navigate(props.card.id+'/lessons')}>
+                <button className="card-item-body-button" onClick={() => navigate(props.card.uuid+'/lessons')}>
                     Перейти
                 </button>
             </div>

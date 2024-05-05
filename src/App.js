@@ -8,7 +8,7 @@ import Error from "./pages/error";
 export default function App() {
     const [isAuth, setIsAuth] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
-
+    const [authData, setAuthData] = useState({userUuid: "123", name: "Ковалева", surname: "Дарья", patronymic: "Максимовна", role: "Преподаватель"})
     useEffect(() => {
         if(localStorage.getItem('auth')) {
             setIsAuth(true)
@@ -22,9 +22,12 @@ export default function App() {
         <AuthContext.Provider value={{
             isAuth,
             setIsAuth,
-            isLoading
+            isLoading,
+            setIsLoading,
+            authData,
+            setAuthData
         }}>
-            <RouterProvider router={router(isAuth)} fallbackElement={<Error />} />
+            <RouterProvider router={router(isAuth,authData,setAuthData)} fallbackElement={<Error />} />
         </AuthContext.Provider>
     );
 }
