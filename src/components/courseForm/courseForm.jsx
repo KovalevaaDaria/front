@@ -8,7 +8,7 @@ const CourseForm = ({create}) => {
     const addNewCourse = (e) => {
         e.preventDefault()
         const newcourse = {
-            ...course, id: Date.now()
+            ...course, uuid: Date.now()
         }
         create(newcourse)
         setCourse({title: '', desc: ''})
