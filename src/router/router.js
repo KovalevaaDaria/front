@@ -40,11 +40,11 @@ export const router = (isLoggedIn, authData, setAuthData) => createBrowserRouter
                                     return lessonsLoader({params, authData})},
                                 errorElement: <Navigate to='/courses'/>,
                             },
-
                             {path: ':lesson', component: <Outlet/>
                                 ,
                                 children: [
                                     {path: '', element: <LessonPage/>},
+                                    {path: ':test', element: <LessonPage/>},
                                     {path: 'add-new-test', element: <AddNewTest/>}
                                 ]
                             }
