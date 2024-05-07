@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import MyInput from "../UI/input/MyInput";
+import "./courseForm.css";
 
 const CourseForm = ({create}) => {
     const [course, setCourse] = useState({title: '', desc: ''})
@@ -10,25 +11,26 @@ const CourseForm = ({create}) => {
             ...course, id: Date.now()
         }
         create(newcourse)
-        setCourse({name: '', desc: ''})
+        setCourse({title: '', desc: ''})
     }
 
     return (
-        <form>
+        <form className="MyInput-form">
+            <div className="MyInput-header">Добавить курс</div>
             <MyInput
-                value={course.name}
-                onChange={e => setCourse({...course, name: e.target.value})}
+                value={course.title}
+                onChange={e => setCourse({...course, title: e.target.value})}
                 type="text"
-                placeholder="Название Курса"
+                placeholder="Название курса"
             />
 
             <MyInput
                 value={course.desc}
                 onChange={e => setCourse({...course, desc: e.target.value})}
                 type="text"
-                placeholder="Описание Курса"
+                placeholder="Описание курса"
             />
-            <button onClick={addNewCourse}>Создать Пост</button>
+            <button className="MyInput-button" onClick={addNewCourse}>Создать курс</button>
         </form>
     );
 };
