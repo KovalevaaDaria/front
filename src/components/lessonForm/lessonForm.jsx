@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import MyInput from "../UI/input/MyInput";
+import "./lessonForm.css"
 
 const LessonForm = ({create}) => {
     const [lesson, setlesson] = useState({title: ''})
@@ -14,14 +15,15 @@ const LessonForm = ({create}) => {
     }
 
     return (
-        <form>
+        <form className="MyInput-lesson-container">
+            <div className="MyInput-lesson-header">Добавить урок</div>
             <MyInput
                 value={lesson.title}
                 onChange={e => setlesson({...lesson, title: e.target.value})}
                 type="text"
-                placeholder="Название Урока"
+                placeholder="Название урока"
             />
-            <button onClick={addNewlesson}>Создать Урок</button>
+            <button className="MyInput-lesson-button" onClick={addNewlesson}>Создать урок</button>
         </form>
     );
 };
