@@ -87,3 +87,8 @@
     font-size: 14px;
     font-weight: 600;
 }
+
+.my-lessons-page-content-list-button:hover {
+    color: white;
+    background-color: #4880FF;
+}

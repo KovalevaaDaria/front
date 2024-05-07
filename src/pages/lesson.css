@@ -180,3 +180,8 @@
     background-color: #4880FF;
 }
 
+.lesson-page-content-form-description-button:hover, .lesson-page-content-form-materials-button:hover, .lesson-page-content-form-test-button:hover {
+    color: white;
+    background-color: #4880FF;
+}
+

@@ -32,3 +32,8 @@
     font-size: 14px;
     font-weight: 600;
 }
+
+.courses-page-button-add-course:hover {
+    color: white;
+    background-color: #4880FF;
+}

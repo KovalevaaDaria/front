@@ -120,6 +120,11 @@
     justify-self: flex-end;
 }
 
+.add-new-question-test-button:hover {
+    color: white;
+    background-color: #4880FF;
+}
+
 .add-new-test-button-container {
     display: flex;
     justify-content: center;

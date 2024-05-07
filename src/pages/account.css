@@ -177,6 +177,11 @@
     background-color: #4880FF;
 }
 
+.account-page-button-logout:hover {
+    color: white;
+    background-color: #4880FF;
+}
+
 .account-page-content-form-row-line-1-item-1-input, .account-page-content-form-row-line-1-item-2-input, .account-page-content-form-row-line-2-item-1-input, .account-page-content-form-row-line-2-item-2-input, .account-page-content-form-row-line-3-item-1-input, .account-page-content-form-row-line-3-item-2-par{
     &:hover,
     &:focus,
