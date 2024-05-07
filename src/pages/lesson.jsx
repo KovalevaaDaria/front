@@ -101,7 +101,7 @@ const LessonPage = () => {
                                     </div>
                                     <div className="lesson-page-content-form-button-container">
                                     <button className="lesson-page-content-button"
-                                                onClick={() => navigate("/courses")}>Сохранить
+                                                onClick={() => navigate("../")}>Сохранить
                                         </button>
                                     </div>
                                 </div>

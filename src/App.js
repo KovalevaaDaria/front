@@ -12,8 +12,12 @@ export default function App() {
     useEffect(() => {
         if(localStorage.getItem('auth')) {
             setIsAuth(true)
+            // fetch userData by API
+            setAuthData({...authData, authToken: localStorage.getItem('auth')})
+        } else {
+            setAuthData(null);
         }
-        setIsLoading(false);
+        setIsLoading(false)
     }, []);
 
     if (isLoading) return <></>
@@ -27,7 +31,7 @@ export default function App() {
             authData,
             setAuthData
         }}>
-            <RouterProvider router={router(isAuth,authData,setAuthData)} fallbackElement={<Error />} />
+            <RouterProvider router={router(isAuth,authData,setAuthData)} fallbackElement={<Error/>}/>
         </AuthContext.Provider>
     );
 }

@@ -17,7 +17,7 @@ const LessonList = ({lessons, remove, title}) => {
     return (
         <div className="my-lesson-list-container">
                 {lessons.map((lesson, index) =>
-                    <LessonListItem remove={remove} number={index + 1} lesson={lesson} key={lesson.id}/>
+                    <LessonListItem remove={remove} number={index + 1} lesson={lesson} key={lesson.uuid}/>
                 )}
         </div>
     );

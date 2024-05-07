@@ -31,7 +31,7 @@ const Login = () => {
                                 onClick={(e) => {
                                     e.preventDefault();
                                     setIsAuth(true);
-                                    localStorage.setItem('auth', 'true');
+                                    localStorage.setItem('auth', 'authtoken');
                                     navigate('/courses', {replace: true});
                                 }}>Войти
                         </button>

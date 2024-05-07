@@ -8,7 +8,7 @@ const LessonForm = ({create}) => {
     const addNewlesson = (e) => {
         e.preventDefault()
         const newlesson = {
-            ...lesson, id: Date.now()
+            ...lesson, uuid: Date.now()
         }
         create(newlesson)
         setlesson({title: ''})
