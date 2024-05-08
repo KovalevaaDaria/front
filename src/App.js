@@ -14,8 +14,6 @@ export default function App() {
             setIsAuth(true)
             // fetch userData by API
             setAuthData({...authData, authToken: localStorage.getItem('auth')})
-        } else {
-            setAuthData(null);
         }
         setIsLoading(false)
     }, []);
