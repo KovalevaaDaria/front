@@ -1,44 +1,15 @@
-import {json} from "react-router-dom";
+import LessonService from "../services/LessonService";
 
 
-export const lessonsLoader = async ({params, authData}) => {
-    console.log(`fetching api data from course ${params.course} using uuid ${authData.userUuid}}`);
-    //API REQUEST
-    // const resp = CourseService.getAll({})
-    const response = json(
-        [
-            {
-                "uuid": "f78105fe-350b-4e13-8058-335d55c89a1a",
-                "title": "Математический Анализ",
-                "description": "что-то важное",
-                "serialNumber": 1,
-                "groupUuid": "f78105fe-350b-4e13-8058-335d55c89a1a"
-            },
-            {
-                "uuid": "f78105fe-350b-4e13-8058-335d55c89a2a",
-                "title": "Математический Анализ",
-                "description": "что-то важное",
-                "serialNumber": 2,
-                "groupUuid": "f78105fe-350b-4e13-8058-335d55c89a1a"
-            },
-            {
-                "uuid": "f78105fe-350b-4e13-8058-335d55c89a3a",
-                "title": "Математический Анализ",
-                "description": "что-то важное",
-                "serialNumber": 3,
-                "groupUuid": "f78105fe-350b-4e13-8058-335d55c89a1a"
-            },
-            {
-                "uuid": "f78105fe-350b-4e13-8058-335d55c89a4a",
-                "title": "Математический Анализ",
-                "description": "что-то важное",
-                "serialNumber": 3,
-                "groupUuid": "f78105fe-350b-4e13-8058-335d55c89a1a"
-            },
-        ], {status: 200}
-    );
+export const lessonsLoader = async ({params, authData, setModal, setError}) => {
+    console.log(`fetching api data from course ${params.course} using token ${authData.authToken}`);
+    const response = await LessonService.getAll({
+        courseUuid: params.course,
+        authToken: authData.authToken
+    })
+    console.log(response)
     if (response.status === 200) {
-        return response
+        return (await response).data
     } else {
         throw new Response("Not Found", { status: response.status });
     }

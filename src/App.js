@@ -1,14 +1,18 @@
 import './App.css';
-import {RouterProvider} from "react-router-dom";
+import {Outlet, RouterProvider} from "react-router-dom";
 import {AuthContext} from "./context/AuthContext";
 import React, {useEffect, useState} from "react";
 import {router} from "./router/router";
 import Error from "./pages/error";
+import ErrorForm from "./components/errorForm/errorForm";
+import MyModal from "./components/myModal/myModal";
 
 export default function App() {
     const [isAuth, setIsAuth] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
-    const [authData, setAuthData] = useState({userUuid: "123", name: "Ковалева", surname: "Дарья", patronymic: "Максимовна", role: "Преподаватель"})
+    const [authData, setAuthData] = useState({userUuid: ""})
+    const [modal, setModal] = useState(false);
+    const [error, setError] = useState("")
     useEffect(() => {
         if(localStorage.getItem('auth')) {
             setIsAuth(true)
@@ -27,9 +31,14 @@ export default function App() {
             isLoading,
             setIsLoading,
             authData,
-            setAuthData
+            setAuthData,
+            setModal,
+            setError
         }}>
-            <RouterProvider router={router(isAuth,authData,setAuthData)} fallbackElement={<Error/>}/>
+            <MyModal visible={modal} setVisible={setModal}>
+                <ErrorForm error={error} setModal={setModal}/>
+            </MyModal>
+            <RouterProvider router={router(isAuth, authData, setModal,setError, setAuthData)} fallbackElement={<Outlet/>}/>
         </AuthContext.Provider>
     );
 }

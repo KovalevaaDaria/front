@@ -8,26 +8,8 @@ export const coursesLoader = async ({authData}) => {
     const response = json(
         [
             {
-                "uuid": "f78105fe-350b-4e13-8058-335d55c89a1a",
+                "uuid": "34561ff3-82ac-450b-9fbd-8f4483148e3e",
                 "title": "Математический Анализ 1",
-                "description": "что-то важное",
-                "img": "https://i.ibb.co/JkW4tYy/Image-2.jpg",
-            },
-            {
-                "uuid": "f78105fe-350b-4e13-8058-335d55c89a2a",
-                "title": "Математический Анализ 2",
-                "description": "что-то важное",
-                "img": "https://i.ibb.co/JkW4tYy/Image-2.jpg",
-            },
-            {
-                "uuid": "f78105fe-350b-4e13-8058-335d55c89a3a",
-                "title": "Математический Анализ 3",
-                "description": "что-то важное",
-                "img": "https://i.ibb.co/JkW4tYy/Image-2.jpg",
-            },
-            {
-                "uuid": "f78105fe-350b-4e13-8058-335d55c89a4a",
-                "title": "Математический Анализ 4",
                 "description": "что-то важное",
                 "img": "https://i.ibb.co/JkW4tYy/Image-2.jpg",
             },

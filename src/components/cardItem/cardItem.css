@@ -46,12 +46,17 @@
 
 .card-item-body-button {
     margin-top: 0;
-    padding: 10px 44px;
-    background-color: #5088FF;
-    color: white;
+    padding: 12px 44px;
+    color: #5088FF;
+    background: transparent;
+    border: 1px solid #5088FF;
     border-radius: 14px;
-    border: none;
     font-size: 14px;
     font-weight: 700;
     max-width: 150px;
+}
+
+.card-item-body-button:hover {
+    background-color: #5088FF;
+    color: white;
 }

@@ -14,14 +14,14 @@ import {lessonsLoader} from "../API/loaders/lessonsLoader";
 import {coursesLoader} from "../API/loaders/coursesLoader";
 import Test from "../pages/test";
 
-export const router = (isLoggedIn, authData, setAuthData) => createBrowserRouter([
+export const router = (isLoggedIn, authData, setModal, setError, setAuthData) => createBrowserRouter([
 
     {
         path: '/',
         element: !isLoggedIn ? <Outlet/> : <Navigate to="/courses"/>,
         children: [
             {path: '/', element: <MainBaumanClass/>},
-            {path: '/login', element: <Login/> },
+            {path: '/login', element: <Login/>},
             {path: '/create-account', element: <CreateAccount/>},
         ],
     },
@@ -38,7 +38,7 @@ export const router = (isLoggedIn, authData, setAuthData) => createBrowserRouter
                     {path: 'lessons', component: <Outlet/>,
                         children: [
                             {path: '', element: <MyLessons/>, loader: async ({ params }) => {
-                                    return lessonsLoader({params, authData})},
+                                    return lessonsLoader({params, authData, setModal, setError})},
                                 errorElement: <Navigate to='/courses'/>,
                             },
                             {path: ':lesson', component: <Outlet/>

@@ -2,6 +2,7 @@ import axios from "axios";
 
 export default class CourseService {
 
+
     static async createCourse({userUuid, title, description, authToken}) {
         const response = await axios.post(`https://localhost:8000/api/v1/courses`, {
             headers: {

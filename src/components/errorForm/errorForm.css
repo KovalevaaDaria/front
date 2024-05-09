@@ -1,0 +1,42 @@
+.Error-form {
+    padding: 40px 80px;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    height: fit-content;
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.Error-header {
+    font-weight: 800;
+    font-size: 32px;
+    color: black;
+}
+
+.Error-text {
+    text-align: center;
+    margin-top: 8px;
+    font-weight: 500;
+    font-size: 26px;
+    color: #606060;
+    max-width: 350px;
+    overflow-wrap: normal;
+}
+
+.Error-button {
+    margin-top: 40px;
+    width: 100%;
+    max-width: 274px;
+    height: 56px;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 14px;
+    color: #EF3826;
+    background-color: transparent;
+    border: 1px solid #EF3826;
+}
+.Error-button:hover {
+    background-color: #EF382640;
+}
