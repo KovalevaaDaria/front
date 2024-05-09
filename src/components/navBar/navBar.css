@@ -34,12 +34,16 @@ nav a {
 }
 
 .nav-bar-image {
-    padding-right: 30px;
-    content: url(../../../public/img/photo.svg);
+    margin-right: 30px;
+    background-image: url(../../../public/img/avatar_icon_blue.svg);
     border-radius: 50px;
-    height: 44px;
-    width: 44px;
-    object-fit: cover;
-    object-position: top;
     overflow: hidden;
+    background-size: 35%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border: 1px solid #B0C7F9;
 }

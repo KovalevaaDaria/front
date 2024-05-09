@@ -7,10 +7,25 @@ export const lessonsLoader = async ({params, authData, setModal, setError}) => {
         courseUuid: params.course,
         authToken: authData.authToken
     })
+        .then(function (response) {
+            return response
+        })
+        .catch(function (error) {
+            console.log("ERROR", error)
+            if (error.response) {
+                return {status: error.response.status, error: error.response.data.message}
+            } else if (error.request) {
+                console.log(error)
+                return {status: 599, error: "Connection Error"}
+            } else {
+                return {status: 520, error: "Unknown Error"}
+            }
+        })
     console.log(response)
     if (response.status === 200) {
         return (await response).data
     } else {
-        throw new Response("Not Found", { status: response.status });
+        setError(response.status.toString() + ": " + response.error)
+        setModal(true)
     }
 }

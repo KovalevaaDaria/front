@@ -1,12 +1,17 @@
 import React from 'react';
 import MenuItem from "../menuItem/menuItem";
 import "./sideMenu.css"
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 
 const SideMenu = () => {
+
+    const navigate = useNavigate();
+
     return (
         <div className="side-menu">
-            <div className="menu-logo-container">
+            <div className="menu-logo-container" onClick={(e)=> {
+                e.preventDefault();
+                navigate("/courses")}}>
                 <div className={"menu-logo"}></div>
             </div>
 

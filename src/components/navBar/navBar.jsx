@@ -1,8 +1,11 @@
 import React from 'react';
 import "./navBar.css"
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 
 const NavBar = ({hasText= true, course}) => {
+
+    const navigate = useNavigate();
+
     return (
         <div className="nav-bar">
             <nav>
@@ -24,7 +27,10 @@ const NavBar = ({hasText= true, course}) => {
                     null
             }
             </nav>
-            <div className="nav-bar-image"></div>
+            <div className="nav-bar-image" onClick={(e)=> {
+                e.preventDefault();
+                navigate("/account");
+            }}></div>
         </div>
     );
 };

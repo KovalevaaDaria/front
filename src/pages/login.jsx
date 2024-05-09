@@ -6,7 +6,7 @@ import AuthService from "../API/services/AuthService";
 
 const Login = () => {
     const navigate = useNavigate();
-    const {setIsAuth, setModal, setError} = useContext(AuthContext);
+    const {setIsAuth, setModal, setError, setAuthData, authData} = useContext(AuthContext);
     const [credentials, setCredentials] = useState({email: "", password: ""})
 
     const [checkData, setCheckData] = useState(false)
@@ -26,7 +26,6 @@ const Login = () => {
 
     useEffect(() => {
         checkIfValid()
-        console.log(credentials);
     }, [credentials]);
 
     return (
@@ -80,6 +79,7 @@ const Login = () => {
                                     if (response.status === 200) {
                                         setIsAuth(true);
                                         localStorage.setItem('auth', response.data.message);
+                                        setAuthData({...authData, authToken: response.data.message});
                                         navigate('/courses', {replace: true});
                                     } else {
                                         setError(response.status.toString() + ": " + response.error)

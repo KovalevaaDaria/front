@@ -14,7 +14,7 @@ export default function App() {
     const [modal, setModal] = useState(false);
     const [error, setError] = useState("")
     useEffect(() => {
-        if(localStorage.getItem('auth')) {
+        if (localStorage.getItem('auth')) {
             setIsAuth(true)
             // fetch userData by API
             setAuthData({...authData, authToken: localStorage.getItem('auth')})

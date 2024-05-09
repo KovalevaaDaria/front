@@ -123,7 +123,7 @@ const CreateAccount = () => {
                                             setModal(true);
                                         }
                                         setIsLoading(false)
-                                    }}>{isLoading ? 'Загрузка...' : 'Зарегестрироваться'}
+                                    }}>{isLoading ? 'Загрузка...' : 'Зарегистрироваться'}
                             </button>
                         </div>
                         <div className="create_account_form__create">

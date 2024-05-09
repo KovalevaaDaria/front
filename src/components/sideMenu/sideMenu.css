@@ -11,14 +11,17 @@
     justify-content: center;
     margin-top: 12px;
     margin-bottom: 15px;
+    cursor: pointer;
 }
 
 .menu-logo {
-    content: url(../../../public/img/logo.svg);
+    content: url(../../../public/img/site_logo.svg);
+    width: 185px;
+    height: 50px;
 }
 
 .menu-list-container {
-    margin-top: 38px;
+    margin-top: 28px;
     display: flex;
     flex-direction: column;
     justify-content: center;
