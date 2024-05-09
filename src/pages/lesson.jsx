@@ -7,6 +7,7 @@ import LessonList from "../components/lessonList/lessonList";
 import NewMaterialFileList from "../components/newMaterialFileList/newMaterialFileList";
 
 const LessonPage = () => {
+
     const params = useParams();
 
     const navigate = useNavigate();

@@ -12,6 +12,7 @@ import Error from "../pages/error";
 import React from "react";
 import {lessonsLoader} from "../API/loaders/lessonsLoader";
 import {coursesLoader} from "../API/loaders/coursesLoader";
+import Test from "../pages/test";
 
 export const router = (isLoggedIn, authData, setAuthData) => createBrowserRouter([
 
@@ -44,7 +45,7 @@ export const router = (isLoggedIn, authData, setAuthData) => createBrowserRouter
                                 ,
                                 children: [
                                     {path: '', element: <LessonPage/>},
-                                    {path: ':test', element: <LessonPage/>},
+                                    {path: ':test', element: <Test/>},
                                     {path: 'add-new-test', element: <AddNewTest/>}
                                 ]
                             }
