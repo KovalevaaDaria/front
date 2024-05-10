@@ -5,6 +5,9 @@ import "./account.css"
 import {useNavigate} from "react-router-dom";
 import {AuthContext} from "../context/AuthContext";
 
+import 'react-loading-skeleton/dist/skeleton.css'
+import Skeleton from "react-loading-skeleton";
+
 const accountData = {
     name: "Дарья",
     surname: "Ковалева",

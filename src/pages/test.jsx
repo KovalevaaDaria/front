@@ -3,8 +3,11 @@ import SideMenu from "../components/sideMenu/sideMenu";
 import NavBar from "../components/navBar/navBar";
 import "./test.css"
 import QuestionList from "../components/questionList/questionList";
+import {useNavigate} from "react-router-dom";
 
 const Test = () => {
+
+    const navigate = useNavigate();
 
     const [checkData, setCheckData] = useState(false)
 
@@ -67,7 +70,7 @@ const Test = () => {
                                                 border: "2px solid #4880FF"
                                             } : {}}
                                             disabled={!checkData}
-                                            onClick={() => console.log("Add answer!")}>Завершить
+                                            onClick={() => navigate("../")}>Завершить
                                     </button>
                                 </div>
                             </div>

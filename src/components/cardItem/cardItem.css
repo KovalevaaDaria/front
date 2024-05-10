@@ -5,6 +5,12 @@
     height: fit-content;
 }
 
+.card-item:hover {
+    .card-item-bin {
+        display: flex;
+    }
+}
+
 .card-item-img-container {
     display: flex;
     justify-content: flex-end;
@@ -12,13 +18,13 @@
 
 .card-item-bin {
     content: url("../../../public/img/bin_black_card.svg");
+    display: none;
     position: absolute;
-    display: flex;
     padding: 16px;
     width: 26px;
     height: 26px;
     z-index: 1;
-
+    cursor: pointer;
 }
 
 .card-item-image {
@@ -54,6 +60,7 @@
     font-size: 14px;
     font-weight: 700;
     max-width: 150px;
+    cursor: pointer;
 }
 
 .card-item-body-button:hover {

@@ -4,7 +4,7 @@ axios.defaults.timeout = 1000;
 
 export default class LessonService {
     static async getAll({courseUuid, authToken}) {
-        return await axios.get(`/api/v1/courses/${courseUuid}/lessons`,
+        return await axios.get(`https://django.roscosmosmuseum.store/api/v1/courses/${courseUuid}/lessons`,
             {
                 headers: {
                     Authorization: "Bearer " + authToken
@@ -16,7 +16,7 @@ export default class LessonService {
             .catch(function (error) {
                 console.log("ERROR", error)
                 if (error.response) {
-                    return {status: error.response.status, error: error.response.data.message}
+                    return {status: error.response.status, error: error.response.statusText}
                 } else if (error.request) {
                     console.log(error)
                     return {status: 599, error: "Connection Error"}

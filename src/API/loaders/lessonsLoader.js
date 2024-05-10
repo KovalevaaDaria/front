@@ -11,9 +11,8 @@ export const lessonsLoader = async ({params, authData, setModal, setError}) => {
             return response
         })
         .catch(function (error) {
-            console.log("ERROR", error)
             if (error.response) {
-                return {status: error.response.status, error: error.response.data.message}
+                return {status: error.response.status, error: error.response.statusText}
             } else if (error.request) {
                 console.log(error)
                 return {status: 599, error: "Connection Error"}
