@@ -18,7 +18,7 @@ export default class CourseService {
     }
 
     static async deleteCourseByID({userUuid, courseUuid, authToken}) {
-        const response = await axios.delete(`https://localhost:8000/api/v1/courses/${courseUuid}`, {
+        const response = await axios.delete(`https://bauman-class.ru/api/v1/courses/${courseUuid}`, {
             headers: {
                 Authorization: authToken
             },
@@ -30,7 +30,7 @@ export default class CourseService {
     }
 
     static async getAll({userUuid, authToken}) {
-        const response = await axios.get(`https://localhost:8000/api/v1/users/${userUuid}/courses`, {
+        const response = await axios.get(`https://bauman-class.ru/api/v1/users/${userUuid}/courses`, {
             headers: {
                 Authorization: authToken
             }
@@ -39,7 +39,7 @@ export default class CourseService {
     }
 
     static async getCourseByID({groupUuid, authToken}) {
-        const response = await axios.get(`https://localhost:8000/api/v1/courses/${groupUuid}`, {
+        const response = await axios.get(`https://bauman-class.ru/api/v1/courses/${groupUuid}`, {
             headers: {
                 Authorization: authToken
             }

@@ -4,7 +4,7 @@ axios.defaults.timeout = 1000;
 
 export default class AuthService {
     static async login({email, password}) {
-        return await axios.post(`https://django.roscosmosmuseum.store/api/v1/login`,
+        return await axios.post(`https://bauman-class.ru/api/v1/login`,
             {
                 email: email,
                 password: password
@@ -26,7 +26,7 @@ export default class AuthService {
     }
 
     static async register({email, password, role, surname, name, patronymic}) {
-        return await axios.post(`https://django.roscosmosmuseum.store/api/v1/signup`,
+        return await axios.post(`https://bauman-class.ru/api/v1/signup`,
             {
                 email: email,
                 password: password,

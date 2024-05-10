@@ -4,7 +4,7 @@ axios.defaults.timeout = 1000;
 
 export default class LessonService {
     static async getAll({courseUuid, authToken}) {
-        return await axios.get(`https://django.roscosmosmuseum.store/api/v1/courses/${courseUuid}/lessons`,
+        return await axios.get(`https://bauman-class.ru/api/v1/courses/${courseUuid}/lessons`,
             {
                 headers: {
                     Authorization: "Bearer " + authToken
@@ -27,7 +27,7 @@ export default class LessonService {
     }
 
     static async deleteLesson({lessonUuid, authToken}) {
-        return await axios.delete(`https://django.roscosmosmuseum.store/api/v1/lessons/${lessonUuid}`,
+        return await axios.delete(`https://bauman-class.ru/api/v1/lessons/${lessonUuid}`,
             {
                 headers: {
                     Authorization: "Bearer " + authToken
