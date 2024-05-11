@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.timeout = 1000;
+axios.defaults.timeout = 5000;
 
 export default class LessonService {
     static async getAll({courseUuid, authToken}) {
@@ -26,8 +26,13 @@ export default class LessonService {
             })
     }
 
-    static async deleteLesson({lessonUuid, authToken}) {
-        return await axios.delete(`https://bauman-class.ru/api/v1/lessons/${lessonUuid}`,
+    static async addLesson({title, description, courseUuid, authToken}) {
+        return await axios.post(`https://bauman-class.ru/api/v1/lessons`,
+            {
+                title: title,
+                description: description,
+                courseUuid: courseUuid
+            },
             {
                 headers: {
                     Authorization: "Bearer " + authToken
@@ -45,6 +50,15 @@ export default class LessonService {
                     return {status: 599, error: "Connection Error"}
                 } else {
                     return {status: 520, error: "Unknown Error"}
+                }
+            })
+    }
+
+    static async deleteLesson({lessonUuid, authToken}) {
+        return await axios.delete(`https://bauman-class.ru/api/v1/lessons/${lessonUuid}`,
+            {
+                headers: {
+                    Authorization: "Bearer " + authToken
                 }
             })
     }

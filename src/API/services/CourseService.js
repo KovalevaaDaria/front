@@ -38,10 +38,10 @@ export default class CourseService {
         return response
     }
 
-    static async getCourseByID({groupUuid, authToken}) {
-        const response = await axios.get(`https://bauman-class.ru/api/v1/courses/${groupUuid}`, {
+    static async getCourseByID({courseUuid, authToken}) {
+        const response = await axios.get(`https://bauman-class.ru/api/v1/courses/${courseUuid}`, {
             headers: {
-                Authorization: authToken
+                Authorization: "Bearer " + authToken
             }
         })
         return response

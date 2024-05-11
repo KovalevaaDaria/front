@@ -5,6 +5,7 @@ import React, {useEffect, useState} from "react";
 import {router} from "./router/router";
 import ErrorForm from "./components/errorForm/errorForm";
 import MyModal from "./components/myModal/myModal";
+import {Toaster} from "react-hot-toast";
 
 export default function App() {
     const [isAuth, setIsAuth] = useState(false)
@@ -18,6 +19,9 @@ export default function App() {
             // fetch userData by API
             setAuthData({...authData, authToken: localStorage.getItem('auth')})
         }
+        setTimeout(() => {
+
+        })
         setIsLoading(false)
     }, []);
 
@@ -37,8 +41,9 @@ export default function App() {
             <MyModal visible={modal} setVisible={setModal}>
                 <ErrorForm error={error} setModal={setModal}/>
             </MyModal>
-                <RouterProvider router={router(isAuth, authData, setModal, setError, setAuthData)}
-                                fallbackElement={<></>}/>
+            <div><Toaster/></div>
+            <RouterProvider router={router(isAuth, authData, setModal, setError, setAuthData)}
+                            fallbackElement={<></>}/>
         </AuthContext.Provider>
     );
 }

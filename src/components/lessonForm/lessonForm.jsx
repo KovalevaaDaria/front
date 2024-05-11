@@ -2,15 +2,15 @@ import React, {useState} from 'react';
 import MyInput from "../UI/input/MyInput";
 import "./lessonForm.css"
 
-const LessonForm = ({create}) => {
+const LessonForm = ({create, isLoading}) => {
     const [lesson, setlesson] = useState({title: ''})
 
-    const addNewlesson = (e) => {
+    const addNewlesson = async (e) => {
         e.preventDefault()
         const newlesson = {
             ...lesson, uuid: Date.now()
         }
-        create(newlesson)
+        await create(newlesson)
         setlesson({title: ''})
     }
 
@@ -23,7 +23,10 @@ const LessonForm = ({create}) => {
                 type="text"
                 placeholder="Название урока"
             />
-            <button className="MyInput-lesson-button" onClick={addNewlesson}>Создать урок</button>
+            <button className="MyInput-lesson-button"
+                    onClick={async (e) => addNewlesson(e)}
+                    disabled={isLoading}
+            >{isLoading ?"Загрузка..." : "Создать урок"}</button>
         </form>
     );
 };
