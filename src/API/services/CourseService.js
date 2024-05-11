@@ -30,7 +30,7 @@ export default class CourseService {
     }
 
     static async getAll({userUuid, authToken}) {
-        const response = await axios.get(`https://bauman-class.ru/api/v1/users/${userUuid}/courses`, {
+        const response = await axios.get(`https://bauman-class.ru/api/v1//courses`, {
             headers: {
                 Authorization: authToken
             }

@@ -10,9 +10,21 @@
     height: fit-content;
 }
 
+.test-page-content-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .test-page-content-header {
     font-size: 32px;
     font-weight: bold;
+}
+
+.test-page-content-header-mark {
+    font-size: 22px;
+    font-weight: bold;
+    color: #5a8cff;
 }
 
 .test-page-content-form {

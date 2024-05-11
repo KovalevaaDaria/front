@@ -28,6 +28,9 @@ export default function App() {
     if (isLoading) return <></>
 
     return (
+        isLoading ?
+            <></>
+            :
         <AuthContext.Provider value={{
             isAuth,
             setIsAuth,

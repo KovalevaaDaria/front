@@ -9,7 +9,6 @@ import CourseForm from "../components/courseForm/courseForm";
 
 const Courses = () => {
     const data = useLoaderData();
-    const navigate = useNavigate();
     const [modal, setModal] = useState(false);
     const [courses, setCourses] = useState(data);
 
@@ -17,7 +16,6 @@ const Courses = () => {
         e.stopPropagation();
         setCourses(courses.filter(c=>c.uuid !== course.uuid))
     }
-
 
     const createCourse = (newCourse) => {
         newCourse = {...newCourse, img: "https://i.ibb.co/JkW4tYy/Image-2.jpg"}

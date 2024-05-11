@@ -2,7 +2,7 @@ import React from 'react';
 import QuestionItem from "../questionItem/questionItem";
 import "./questionList.css"
 
-const QuestionList = ({questions, setQuestions}) => {
+const QuestionList = ({questions, setQuestions, isPassed}) => {
 
     const setQuestion = (newQuestion) => {
         setQuestions(prevQuestions => {
@@ -18,7 +18,7 @@ const QuestionList = ({questions, setQuestions}) => {
     return (
         <div className="test-page-content-form-question-component-list-container">
             {questions.map((question, index) =>
-                <QuestionItem number={index + 1} question={question} key={question.uuid} setQuestion={setQuestion}/>
+                <QuestionItem number={index + 1} question={question} key={question.uuid} isPassed={isPassed} setQuestion={setQuestion}/>
             )}
         </div>
     );
