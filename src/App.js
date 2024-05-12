@@ -9,7 +9,7 @@ import {Toaster} from "react-hot-toast";
 import AuthService from "./API/services/AuthService";
 
 export default function App() {
-    const [isAuth, setIsAuth] = useState(true)
+    const [isAuth, setIsAuth] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
     const [authData, setAuthData] = useState({userUuid: ""})
     const [modal, setModal] = useState(false)
@@ -17,19 +17,24 @@ export default function App() {
 
 
     useEffect(() => {
-        if (localStorage.getItem('auth')) {
-            const authToken = localStorage.getItem('auth')
-            const data = AuthService.getUserInfo({authToken: authToken})
-            data.then((response) => {
-                if (response.message) {
-                    setAuthData({...authData, authToken: authToken})
-                    setIsAuth(true)
-                } else {
-                    setIsAuth(false)
-                }
-            })
-        }
-        setIsLoading(false)
+            if (localStorage.getItem('auth')) {
+                const authToken = localStorage.getItem('auth')
+                AuthService.getUserInfo({authToken})
+                    .then(r => {
+                        if (r.data.message) {
+                            localStorage.removeItem('auth')
+                        } else {
+                            setIsAuth(true)
+                            setAuthData({...authData, authToken: authToken})
+                        }
+                    })
+                    .catch(r => {
+                        localStorage.removeItem('auth')
+                        setError("Error")
+                        setModal(true)
+                    })
+            }
+        setTimeout( () => {setIsLoading(false)}, 1000)
     }, []);
 
     if (isLoading) return <></>
