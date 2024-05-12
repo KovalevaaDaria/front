@@ -1,11 +1,12 @@
 import './App.css';
-import {RouterProvider, useLocation, useNavigate, useParams} from "react-router-dom";
+import {RouterProvider} from "react-router-dom";
 import {AuthContext} from "./context/AuthContext";
 import React, {useEffect, useState} from "react";
 import {router} from "./router/router";
 import ErrorForm from "./components/errorForm/errorForm";
 import MyModal from "./components/myModal/myModal";
 import {Toaster} from "react-hot-toast";
+import AuthService from "./API/services/AuthService";
 
 export default function App() {
     const [isAuth, setIsAuth] = useState(false)
@@ -17,13 +18,15 @@ export default function App() {
 
     useEffect(() => {
         if (localStorage.getItem('auth')) {
-            setIsAuth(true)
-            // fetch userData by API
-            setAuthData({...authData, authToken: localStorage.getItem('auth')})
+            const authToken = localStorage.getItem('auth')
+            const data = AuthService.getUserInfo({authToken: authToken})
+            data.then((response) => {
+                if (response.message) {
+                    setAuthData({...authData, authToken: authToken})
+                    setIsAuth(true)
+                }
+            })
         }
-        setTimeout(() => {
-
-        })
         setIsLoading(false)
     }, []);
 
