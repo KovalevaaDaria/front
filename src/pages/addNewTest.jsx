@@ -39,7 +39,8 @@ const AddNewTest = () => {
                                     <p className="add-new-test-form-content-text-title">Введите тему теста</p>
                                 </div>
                                 <input autoComplete="on" className="add-new-test-form-content-input-subject-text-input"
-                                       placeholder="Тема теста"></input>
+                                       placeholder="Тема теста"
+                                />
                             </div>
                             <div className="add-new-test-form-content-input-deadline">
                                 <div className="add-new-test-form-content-input-deadline-title">
@@ -47,7 +48,8 @@ const AddNewTest = () => {
                                 </div>
                                 <input type={"datetime-local"} autoComplete="on"
                                        className="add-new-test-form-content-input-deadline-input"
-                                       placeholder="Дедлайн"></input>
+                                       placeholder="Дедлайн"
+                                />
                             </div>
                         </div>
                     </div>
