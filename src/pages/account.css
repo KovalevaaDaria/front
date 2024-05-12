@@ -56,11 +56,11 @@
 }
 
 .account-page-content-img {
-    background-image: url(../../public/img/avatar_icon_blue.svg);
+    background-image: url(../../public/img/account_icon.png);
     border-radius: 50px;
     overflow: hidden;
-    border: 4px solid #B0C7F9;
-    background-size: 85%;
+    border: 1px solid #B0C7F9;
+    background-size: 115%;
     background-position: center;
     background-repeat: no-repeat;
     background-color: transparent;

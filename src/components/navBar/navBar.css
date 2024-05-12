@@ -35,10 +35,10 @@ nav a {
 
 .nav-bar-image {
     margin-right: 30px;
-    background-image: url(../../../public/img/avatar_icon_blue.svg);
+    background-image: url(../../../public/img/account_icon.png);
     border-radius: 50px;
     overflow: hidden;
-    background-size: 35%;
+    background-size: 115%;
     background-position: center;
     background-repeat: no-repeat;
     background-color: transparent;
