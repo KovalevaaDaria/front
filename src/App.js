@@ -9,7 +9,7 @@ import {Toaster} from "react-hot-toast";
 import AuthService from "./API/services/AuthService";
 
 export default function App() {
-    const [isAuth, setIsAuth] = useState(false)
+    const [isAuth, setIsAuth] = useState(true)
     const [isLoading, setIsLoading] = useState(true)
     const [authData, setAuthData] = useState({userUuid: ""})
     const [modal, setModal] = useState(false)
@@ -24,6 +24,8 @@ export default function App() {
                 if (response.message) {
                     setAuthData({...authData, authToken: authToken})
                     setIsAuth(true)
+                } else {
+                    setIsAuth(false)
                 }
             })
         }
