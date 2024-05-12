@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import SideMenu from "../components/sideMenu/sideMenu";
 import NavBar from "../components/navBar/navBar";
 import {useLoaderData, useNavigate} from "react-router-dom";
@@ -6,21 +6,58 @@ import "./courses.css"
 import CardList from "../components/cardList/cardList";
 import MyModal from "../components/myModal/myModal";
 import CourseForm from "../components/courseForm/courseForm";
+import toast from "react-hot-toast";
+import CourseService from "../API/services/CourseService";
+import {AuthContext} from "../context/AuthContext";
+import LessonService from "../API/services/LessonService";
 
 const Courses = () => {
     const data = useLoaderData();
+    const {authData} = useContext(AuthContext);
     const [modal, setModal] = useState(false);
     const [courses, setCourses] = useState(data);
+    const [isLoading, setLoading] = useState(false);
 
-    const removeCourse = (course, e) => {
+    const removeCourse = async (course, e) => {
         e.stopPropagation();
-        setCourses(courses.filter(c=>c.uuid !== course.uuid))
+        await toast.promise(
+            CourseService.deleteCourseByID({courseUuid: course.uuid, authToken: authData.authToken}),
+            {
+                loading: 'Удаляю курс...',
+                success: <b>Курс удален!</b>,
+                error: <b>Ошибка. Не удалось удалить курс!</b>,
+            }
+        ).then((response) => {
+            setCourses(courses.filter(c=>c.uuid !== course.uuid))
+        }).catch(() => {
+
+        })
     }
 
-    const createCourse = (newCourse) => {
-        newCourse = {...newCourse, img: "https://i.ibb.co/JkW4tYy/Image-2.jpg"}
-        setCourses([...courses, newCourse])
-        setModal(false)
+    const createCourse = async (newCourse) => {
+        setLoading(true)
+        await toast.promise(
+            CourseService.createCourse({
+                title: newCourse.title,
+                description: newCourse.desc,
+                authToken: authData.authToken
+            }),
+            {
+                loading: 'Создаю курс...',
+                success: <b>Курс создан!</b>,
+                error: <b>Не удалось создать курс</b>,
+            }
+        )
+            .then((response) => {
+                setCourses([...courses, {title: response.data.title, uuid: response.data.uuid, imageUrl: response.data.imageUrl}])
+            })
+            .catch(() => {
+
+            })
+            .finally(() => {
+                setModal(false)
+                setLoading(false)
+            })
     }
 
     return (

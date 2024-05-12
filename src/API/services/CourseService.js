@@ -3,39 +3,33 @@ import axios from "axios";
 export default class CourseService {
 
 
-    static async createCourse({userUuid, title, description, authToken}) {
-        const response = await axios.post(`https://localhost:8000/api/v1/courses`, {
+    static async createCourse({title, description, authToken}) {
+        return await axios.post(`https://bauman-class.ru/api/v1/courses`, {
+            title: title,
+            description: description,
+            imageUrl: "https://i.ibb.co/JkW4tYy/Image-2.jpg"
+        },
+            {
             headers: {
-                Authorization: authToken
+                Authorization:"Bearer " + authToken
             },
-            data: {
-                title: title,
-                description: description,
-                userUuid: userUuid
-            }
         })
-        return response
     }
 
-    static async deleteCourseByID({userUuid, courseUuid, authToken}) {
-        const response = await axios.delete(`https://bauman-class.ru/api/v1/courses/${courseUuid}`, {
+    static async deleteCourseByID({courseUuid, authToken}) {
+        return await axios.delete(`https://bauman-class.ru/api/v1/courses/${courseUuid}`, {
             headers: {
-                Authorization: authToken
-            },
-            data: {
-                userUuid: userUuid
+                Authorization: "Bearer " + authToken
             }
         })
-        return response
     }
 
-    static async getAll({userUuid, authToken}) {
-        const response = await axios.get(`https://bauman-class.ru/api/v1//courses`, {
+    static async getAll({authToken}) {
+        return await axios.get(`https://bauman-class.ru/api/v1/courses`, {
             headers: {
-                Authorization: authToken
+                Authorization: "Bearer " + authToken
             }
         })
-        return response
     }
 
     static async getCourseByID({courseUuid, authToken}) {

@@ -7,10 +7,7 @@ const LessonForm = ({create, isLoading}) => {
 
     const addNewlesson = async (e) => {
         e.preventDefault()
-        const newlesson = {
-            ...lesson, uuid: Date.now()
-        }
-        await create(newlesson)
+        await create(lesson)
         setlesson({title: ''})
     }
 

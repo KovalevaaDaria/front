@@ -30,7 +30,8 @@ export const router = (isLoggedIn, authData, setModal, setError, setAuthData) =>
         element: isLoggedIn ? <Outlet/> : <Navigate to="/login"/>,
         children: [
             { path: '', element: <Courses/>, loader: async () => {
-                    return coursesLoader({authData})},},
+                    return coursesLoader({authData, setModal, setError})}
+            },
             {
                 path: ':course', element: <Outlet/>,
                 children: [

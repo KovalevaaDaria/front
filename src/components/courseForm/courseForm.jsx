@@ -1,16 +1,14 @@
 import React, {useState} from 'react';
 import MyInput from "../UI/input/MyInput";
 import "./courseForm.css";
+import courses from "../../pages/courses";
 
 const CourseForm = ({create}) => {
     const [course, setCourse] = useState({title: '', desc: ''})
 
-    const addNewCourse = (e) => {
+    const addNewCourse = async (e) => {
         e.preventDefault()
-        const newcourse = {
-            ...course, uuid: Date.now()
-        }
-        create(newcourse)
+        await create(course)
         setCourse({title: '', desc: ''})
     }
 
@@ -30,7 +28,7 @@ const CourseForm = ({create}) => {
                 type="text"
                 placeholder="Описание курса"
             />
-            <button className="MyInput-button" onClick={addNewCourse}>Создать курс</button>
+            <button className="MyInput-button" onClick={async (e) => addNewCourse(e)}>Создать курс</button>
         </form>
     );
 };
