@@ -1,12 +1,12 @@
-import CourseService from "../services/CourseService";
+import AuthService from "../services/AuthService";
 
 
-export const coursesLoader = async ({authData, setModal, setError, setIsAuth}) => {
-    console.log(`fetching api data for courses using token ${authData.authToken}}`);
+export const accountLoader = async ({authData, setModal, setError, setIsAuth}) => {
+    console.log(`fetching api data for account using token ${authData.authToken}}`);
 
-    return await CourseService.getAll({authToken: authData.authToken})
+    return await AuthService.getUserInfo({authToken: authData.authToken})
         .then(function (response) {
-            return response.data
+            return {...response.data, role: response.data.role === "TEACHER" ? "Преподаватель" : "Студент"}
         })
         .catch(function (error) {
             if (error.response) {
@@ -23,7 +23,8 @@ export const coursesLoader = async ({authData, setModal, setError, setIsAuth}) =
                 setError("520: Unknown Error")
                 setModal(true)
             }
-            return [
-            ]
+            return {
+
+            }
         })
 }

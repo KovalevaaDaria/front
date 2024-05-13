@@ -2,23 +2,16 @@ import React, {useContext, useEffect, useState} from 'react';
 import SideMenu from "../components/sideMenu/sideMenu";
 import NavBar from "../components/navBar/navBar";
 import "./account.css"
-import {useNavigate} from "react-router-dom";
+import {useLoaderData, useNavigate} from "react-router-dom";
 import {AuthContext} from "../context/AuthContext";
 
 import 'react-loading-skeleton/dist/skeleton.css'
 import Skeleton from "react-loading-skeleton";
 
-const accountData = {
-    name: "Дарья",
-    surname: "Ковалева",
-    patronymic: "Максимовна",
-    email: "love.iu7@bmstu.ru",
-    group: "♡ИУ7♡",
-    role: "♡ИУ7♡"
-}
 
 const Account = () => {
     const navigate = useNavigate();
+    const accountData = useLoaderData();
 
     const [account, setAccount] = useState(accountData)
     const [checkData, setCheckData] = useState(false)
@@ -42,6 +35,10 @@ const Account = () => {
     useEffect(() => {
         checkIfValid()
     }, [account]);
+
+    useEffect(() => {
+        setAccount(accountData);
+    }, [accountData]);
 
     return (
         <div className="page-header">

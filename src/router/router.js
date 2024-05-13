@@ -13,6 +13,7 @@ import React from "react";
 import {lessonsLoader} from "../API/loaders/lessonsLoader";
 import {coursesLoader} from "../API/loaders/coursesLoader";
 import Test from "../pages/test";
+import {accountLoader} from "../API/loaders/accountLoader";
 
 export const router = (isLoggedIn, authData, setModal, setError, setAuthData, setIsAuth) => createBrowserRouter([
 
@@ -58,7 +59,10 @@ export const router = (isLoggedIn, authData, setModal, setError, setAuthData, se
     },
     {
         path: '/account',
-        element: isLoggedIn ? <Account/> : <Navigate to="/login"/>
+        element: isLoggedIn ? <Account/> : <Navigate to="/login" l/>,
+        loader: async ({params}) => {
+            return accountLoader({authData, setModal, setError, setIsAuth, params})
+        }
     },
     {
         path: '*',

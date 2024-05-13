@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import SideMenu from "../components/sideMenu/sideMenu";
 import NavBar from "../components/navBar/navBar";
 import {useLoaderData} from "react-router-dom";
@@ -59,6 +59,10 @@ const Courses = () => {
                 setLoading(false)
             })
     }
+
+    useEffect(() => {
+        setCourses(data);
+    }, [data]);
 
     return (
         <div className="page-header">
