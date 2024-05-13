@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react';
 import SideMenu from "../components/sideMenu/sideMenu";
 import NavBar from "../components/navBar/navBar";
-import {useLoaderData, useNavigate} from "react-router-dom";
+import {useLoaderData} from "react-router-dom";
 import "./courses.css"
 import CardList from "../components/cardList/cardList";
 import MyModal from "../components/myModal/myModal";
@@ -9,7 +9,6 @@ import CourseForm from "../components/courseForm/courseForm";
 import toast from "react-hot-toast";
 import CourseService from "../API/services/CourseService";
 import {AuthContext} from "../context/AuthContext";
-import LessonService from "../API/services/LessonService";
 
 const Courses = () => {
     const data = useLoaderData();

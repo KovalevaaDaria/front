@@ -71,21 +71,24 @@ const Login = () => {
                                 onClick={async (e) => {
                                     e.preventDefault()
                                     setIsLoading(true)
-                                    const response = await AuthService.login({
+                                    await AuthService.login({
                                         email: credentials.email,
                                         password: credentials.password
-                                    })
-
-                                    if (response.status === 200) {
-                                        setIsAuth(true);
+                                    }).then(response => {
+                                        console.log(response)
                                         localStorage.setItem('auth', response.data.message);
                                         setAuthData({...authData, authToken: response.data.message});
-                                        navigate('/courses', {replace: true});
-                                    } else {
+                                        setIsAuth(true)
+                                        }
+                                    ).catch(response => {
+                                        console.log(response)
                                         setError(response.status.toString() + ": " + response.error)
                                         setModal(true);
-                                    }
-                                    setIsLoading(false)
+                                        }
+
+                                    ).finally(() =>
+                                        setIsLoading(false)
+                                    )
                                 }}>{isLoading ? 'Загрузка...' : 'Войти'}
                         </button>
                     </div>

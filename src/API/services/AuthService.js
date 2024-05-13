@@ -1,11 +1,10 @@
 import axios from "axios";
 
-axios.defaults.timeout = 1000;
+axios.defaults.timeout = 3000;
 
 export default class AuthService {
     static async getUserInfo({authToken}) {
-        return await axios.post(`https://bauman-class.ru/api/v1/get-user-info`,
-            {},
+        return await axios.get(`https://bauman-class.ru/api/v1/user-info`,
             {
                 headers: {
                     Authorization: "Bearer " + authToken

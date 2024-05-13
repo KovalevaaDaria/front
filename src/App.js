@@ -15,50 +15,61 @@ export default function App() {
     const [modal, setModal] = useState(false)
     const [error, setError] = useState("")
 
-
     useEffect(() => {
-            if (localStorage.getItem('auth')) {
-                const authToken = localStorage.getItem('auth')
-                AuthService.getUserInfo({authToken})
-                    .then(r => {
-                        if (r.data.message) {
-                            localStorage.removeItem('auth')
-                        } else {
-                            setIsAuth(true)
-                            setAuthData({...authData, authToken: authToken})
-                        }
-                    })
-                    .catch(r => {
+        const authToken = localStorage.getItem('auth')
+        const fetchData = async (authToken) => {
+            return await AuthService.getUserInfo({authToken})
+        }
+
+        if (localStorage.getItem('auth')) {
+            console.log("VALIDATING TOKEN")
+            fetchData(authToken)
+                .then(r => {
+                    console.log(r)
+                    if (r.data.message) {
                         localStorage.removeItem('auth')
-                        setError("Error")
-                        setModal(true)
-                    })
-            }
-        setTimeout( () => {setIsLoading(false)}, 1000)
+                    } else {
+                        setAuthData({...authData, authToken: authToken})
+                        setIsAuth(true)
+                    }
+                })
+                .catch(r => {
+                    console.log("ERROR")
+                    localStorage.removeItem('auth')
+                    setError("Error")
+                    setModal(true)
+                })
+                .finally(() => {
+                    console.log("LOADED!")
+                    setIsLoading(false)
+                })
+
+        } else {
+            console.log("NO AUTH IN LOCAL")
+            setIsLoading(false)
+        }
     }, []);
 
-    if (isLoading) return <></>
-
     return (
-        isLoading ?
-            <></>
-            :
-        <AuthContext.Provider value={{
-            isAuth,
-            setIsAuth,
-            isLoading,
-            setIsLoading,
-            authData,
-            setAuthData,
-            setModal,
-            setError
-        }}>
-            <MyModal visible={modal} setVisible={setModal}>
-                <ErrorForm error={error} setModal={setModal}/>
-            </MyModal>
-            <div><Toaster/></div>
-            <RouterProvider router={router(isAuth, authData, setModal, setError, setAuthData)}
-                            fallbackElement={<></>}/>
-        </AuthContext.Provider>
-    );
-}
+                isLoading?
+                    <><div>Loading...</div></>
+                    :
+                <AuthContext.Provider value={{
+                    isAuth,
+                    setIsAuth,
+                    isLoading,
+                    setIsLoading,
+                    authData,
+                    setAuthData,
+                    setModal,
+                    setError
+                }}>
+                    <MyModal visible={modal} setVisible={setModal}>
+                        <ErrorForm error={error} setModal={setModal}/>
+                    </MyModal>
+                    <div><Toaster/></div>
+                    <RouterProvider router={router(isAuth, authData, setModal, setError, setAuthData, setIsAuth)}
+                                    fallbackElement={<></>}/>
+                </AuthContext.Provider>
+        );
+    }
