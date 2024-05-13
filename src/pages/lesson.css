@@ -68,7 +68,6 @@
     padding: 1em;
     resize: none;
     border: 2px solid #D5D5D5;
-
 }
 
 .lesson-page-content-form-description-button {
@@ -184,5 +183,18 @@
 .lesson-page-content-form-description-button:hover, .lesson-page-content-form-materials-button:hover, .lesson-page-content-form-test-button:hover {
     color: white;
     background-color: #4880FF;
+}
+
+.lesson-page-content-form-description-input-student {
+    pointer-events: none;
+    margin-top: 17px;
+    max-width: 605px;
+    height: 162px;
+    border-radius: 14px;
+    padding-inline: 10px;
+    font-size: 16px;
+    padding: 1em;
+    resize: none;
+    border: 2px solid #D5D5D5;
 }
 

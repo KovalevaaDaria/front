@@ -9,6 +9,7 @@ import CourseForm from "../components/courseForm/courseForm";
 import toast from "react-hot-toast";
 import CourseService from "../API/services/CourseService";
 import {AuthContext} from "../context/AuthContext";
+import InviteCodeForm from "../components/inviteCodeForm/inviteCodeForm";
 
 const Courses = () => {
     const data = useLoaderData();
@@ -81,6 +82,31 @@ const Courses = () => {
                 </div>
             </div>
         </div>
+
+
+        //Отображение страницы для студента
+        // <div className="page-header">
+        //     <SideMenu/>
+        //     <MyModal visible={modal} setVisible={setModal}>
+        //         <InviteCodeForm create={createCourse}/>
+        //     </MyModal>
+        //     <div className="content">
+        //         <NavBar hasText={false}/>
+        //         <div className="courses-page-wrap">
+        //             <div className="courses-page-content">
+        //                 <div className="courses-page-content-header">
+        //                     <h1 className="courses-page-title">Курсы</h1>
+        //                     <button className="courses-page-button-add-course" onClick={() => setModal(true)}>Добавить
+        //                         курс
+        //                     </button>
+        //                 </div>
+        //                 <div className="courses-page-content-layout">
+        //                     {/*<CardList cards={courses} remove={removeCourse} title={"На данный момент курсов нет..."}/>*/}
+        //                 </div>
+        //             </div>
+        //         </div>
+        //     </div>
+        // </div>
     );
 };
 

@@ -79,6 +79,10 @@ const MyLessons = () => {
                         <div className="my-lessons-page-content-header">
                             <h1 className="my-lessons-page-title">Учебная группа</h1>
                             <div className="my-lessons-page-content-form">
+                                <div className="courses-page-content-layout-form-invite-code">
+                                    <div className="courses-page-content-layout-form-invite-code-title">Код приглашения:</div>
+                                    <input className="courses-page-content-layout-form-invite-code-input"></input>
+                                </div>
                                 <div className="my-lessons-page-content-form-header">{courseData.title}</div>
                                 <div className="my-lessons-page-content-form-description">{courseData.description}
                                 </div>
@@ -99,6 +103,35 @@ const MyLessons = () => {
                 </div>
             </div>
         </div>
+
+
+        //Отображение страницы у студента
+        // <div className="page-header">
+        //     <SideMenu/>
+        //     <div className="content">
+        //         <NavBar course={params.course}/>
+        //         <div className="my-lessons-page-wrap">
+        //             <div className="my-lessons-page-content">
+        //                 <div className="my-lessons-page-content-header">
+        //                     <h1 className="my-lessons-page-title">Учебная группа</h1>
+        //                     <div className="my-lessons-page-content-form">
+        //                         <div className="my-lessons-page-content-form-header">{courseData.title}</div>
+        //                         <div className="my-lessons-page-content-form-description">{courseData.description}
+        //                         </div>
+        //                     </div>
+        //                 </div>
+        //
+        //                 <div className="my-lessons-page-content-list">
+        //                     <div className="my-lessons-page-content-list-row">
+        //                         <div className="my-lessons-page-content-list-header">Уроки</div>
+        //                     </div>
+        //                     <LessonList remove={removeLesson} title={"На данный момент уроков нет..."}
+        //                                 lessons={lessons}/>
+        //                 </div>
+        //             </div>
+        //         </div>
+        //     </div>
+        // </div>
     );
 };
 

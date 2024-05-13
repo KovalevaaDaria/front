@@ -42,8 +42,31 @@
     background-position: center;
 }
 
+.courses-page-content-layout-form-invite-code {
+    display: flex;
+    flex-direction: row;
+    margin-top: 31px;
+    gap: 19px;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 20px;
+    padding-left: 39px;
+}
+
+.courses-page-content-layout-form-invite-code-title {
+    font-size: 20px;
+}
+
+.courses-page-content-layout-form-invite-code-input {
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 12px;
+    width: 462px;
+    height: 46px;
+}
+
 .my-lessons-page-content-form-header {
-    margin-top: 140px;
+    margin-top: 69px;
     padding-left: 39px;
     font-size: 50px;
     font-weight: 900;

@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import MyInput from "../UI/input/MyInput";
 import "./courseForm.css";
-import courses from "../../pages/courses";
 
 const CourseForm = ({create}) => {
     const [course, setCourse] = useState({title: '', desc: ''})
