@@ -75,13 +75,14 @@ const Login = () => {
                                         email: credentials.email,
                                         password: credentials.password
                                     }).then(response => {
-                                        console.log(response)
-                                        localStorage.setItem('auth', response.data.message);
-                                        setAuthData({...authData, authToken: response.data.message});
-                                        setIsAuth(true)
+                                        console.log("THEN", response)
+                                        if (response.data) {
+                                            localStorage.setItem('auth', response.data.message);
+                                            setAuthData({...authData, authToken: response.data.message});
+                                            setIsAuth(true)
                                         }
-                                    ).catch(response => {
-                                        console.log(response)
+                                    }).catch(response => {
+                                        console.log("ERR", response)
                                         setError(response.status.toString() + ": " + response.error)
                                         setModal(true);
                                         }

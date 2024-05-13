@@ -21,14 +21,12 @@ export default class AuthService {
             return response
             })
             .catch(function (error) {
-                console.log("ERROR", error)
                 if (error.response) {
-                    return {status: error.response.status, error: error.response.data.message}
+                    throw {status: error.response.status, error: error.response.data.message}
                 } else if (error.request) {
-                    console.log(error)
-                    return {status: 599, error: "Connection Error"}
+                    throw {status: 599, error: "Connection Error"}
                 } else {
-                    return {status: 520, error: "Unknown Error"}
+                    throw {status: 520, error: "Unknown Error"}
                 }
             })
     }
