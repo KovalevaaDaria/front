@@ -8,7 +8,7 @@ const NewQuestionList = ({questions, set, remove}) => {
     useEffect(() => {
         const lastChildElement = ref.current?.lastElementChild;
         lastChildElement?.scrollIntoView({ behavior: 'smooth' });
-    }, [questions]);
+    }, [questions.length]);
 
     return (
         <div className="add-new-test-form-container-list"

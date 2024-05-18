@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import "./addNewTest.css"
 import {useNavigate} from "react-router-dom";
 import NewQuestionList from "../components/newQuestionList/newQuestionList";
@@ -9,6 +9,8 @@ const AddNewTest = () => {
     const navigate = useNavigate();
 
     const [questions, setQuestions] = useState([])
+    const [deadline, setDeadline] = useState("")
+    const [testTheme, setTestTheme] = useState("")
 
     const removeQuestion = (question, e) => {
         e.stopPropagation();
@@ -23,7 +25,6 @@ const AddNewTest = () => {
                 return q
             }
         }))
-        console.log(questions)
     }
 
     const addQuestion = (e) => {
@@ -36,6 +37,12 @@ const AddNewTest = () => {
         }
         setQuestions([...questions, newQuestion])
     }
+
+    useEffect(() => {
+        console.log(testTheme)
+        console.log(deadline)
+        console.log(questions)
+    }, [testTheme, deadline, questions]);
 
 
     return (
@@ -50,6 +57,8 @@ const AddNewTest = () => {
                                     <p className="add-new-test-form-content-text-title">Введите тему теста</p>
                                 </div>
                                 <input autoComplete="on" className="add-new-test-form-content-input-subject-text-input"
+                                       value={testTheme}
+                                       onChange={e => setTestTheme(e.target.value)}
                                        placeholder="Тема теста"
                                 />
                             </div>
@@ -59,6 +68,8 @@ const AddNewTest = () => {
                                 </div>
                                 <input type={"datetime-local"} autoComplete="on"
                                        className="add-new-test-form-content-input-deadline-input"
+                                       value={deadline}
+                                       onChange={e => setDeadline(e.target.value)}
                                        placeholder="Дедлайн"
                                 />
                             </div>
@@ -72,7 +83,10 @@ const AddNewTest = () => {
                     </div>
                     <div className="add-new-test-button-container">
                         <button className="add-new-test-button" type="submit"
-                                onClick={() => navigate(-1)}>Добавить тест
+                                onClick={() => {
+                                    console.log(testTheme, deadline, questions)
+                                    navigate("../")
+                                }}>Добавить тест
                         </button>
                     </div>
                 </div>
