@@ -3,8 +3,6 @@ import "./addNewTest.css"
 import {useNavigate} from "react-router-dom";
 import NewQuestionList from "../components/newQuestionList/newQuestionList";
 
-const question = {text: "text"}
-
 
 const AddNewTest = () => {
 
@@ -17,11 +15,24 @@ const AddNewTest = () => {
         setQuestions(questions.filter(q => q.id !== question.id))
     }
 
+    const setQuestion = (question) => {
+        setQuestions(questions.map(q => {
+            if (q.id === question.id) {
+                return question
+            } else {
+                return q
+            }
+        }))
+        console.log(questions)
+    }
+
     const addQuestion = (e) => {
         e.preventDefault();
         const newQuestion = {
             id: Date.now(),
-            title: `Урок ${questions.length + 1}`,
+            title: "",
+            type: "MANUAL_CHECK",
+            teacherAnswer: ""
         }
         setQuestions([...questions, newQuestion])
     }
@@ -53,7 +64,7 @@ const AddNewTest = () => {
                             </div>
                         </div>
                     </div>
-                    <NewQuestionList remove={removeQuestion} questions={questions}/>
+                    <NewQuestionList remove={removeQuestion} set={setQuestion} questions={questions}/>
                     <div className="add-new-test-form-container-button">
                         <button className="add-new-question-test-button"
                                 onClick={(e) => addQuestion(e)}>Добавить вопрос

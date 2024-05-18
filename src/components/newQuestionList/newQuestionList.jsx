@@ -2,7 +2,7 @@ import React, {useEffect, useRef} from 'react';
 import NewQuestionItem from "../newQuestionItem/newQuestionItem";
 import "./newQuestionList.css"
 
-const NewQuestionList = ({questions, remove}) => {
+const NewQuestionList = ({questions, set, remove}) => {
     const ref = useRef(null)
 
     useEffect(() => {
@@ -14,7 +14,7 @@ const NewQuestionList = ({questions, remove}) => {
         <div className="add-new-test-form-container-list"
              ref={ref}>
             {questions.map((question, index) =>
-                <NewQuestionItem remove={remove} number={index + 1} question={question} key={question.id}/>
+                <NewQuestionItem remove={remove} setQuestion={set} number={index + 1} question={question} key={question.id}/>
             )}
         </div>
     );
