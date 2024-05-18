@@ -1,11 +1,10 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {Link, useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 import "./login.css";
 import {AuthContext} from "../context/AuthContext";
 import AuthService from "../API/services/AuthService";
 
 const Login = () => {
-    const navigate = useNavigate();
     const {setIsAuth, setModal, setError, setAuthData, authData} = useContext(AuthContext);
     const [credentials, setCredentials] = useState({email: "", password: ""})
 

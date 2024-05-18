@@ -2,7 +2,7 @@ import React, {useContext, useState} from 'react';
 import SideMenu from "../components/sideMenu/sideMenu";
 import NavBar from "../components/navBar/navBar";
 import "./myLessons.css"
-import {useLoaderData, useNavigate, useParams} from "react-router-dom";
+import {useLoaderData, useParams} from "react-router-dom";
 import LessonList from "../components/lessonList/lessonList";
 import LessonForm from "../components/lessonForm/lessonForm";
 import MyModal from "../components/myModal/myModal";
@@ -21,7 +21,6 @@ const MyLessons = () => {
     const params = useParams();
     console.log(params)
 
-    const navigate = useNavigate();
     const [lessons, setLessons] = useState(lessonsData);
 
     const removeLesson = async (lesson, e) => {
@@ -80,8 +79,20 @@ const MyLessons = () => {
                             <h1 className="my-lessons-page-title">Учебная группа</h1>
                             <div className="my-lessons-page-content-form">
                                 <div className="courses-page-content-layout-form-invite-code">
-                                    <div className="courses-page-content-layout-form-invite-code-title">Код приглашения:</div>
-                                    <input className="courses-page-content-layout-form-invite-code-input"></input>
+                                    <div className="courses-page-content-layout-form-invite-code-title">Код
+                                        приглашения:
+                                    </div>
+                                    <input className="courses-page-content-layout-form-invite-code-input"
+                                           id="courses-page-content-layout-form-invite-code-input"
+                                           disabled={true}
+                                           value={courseData.inviteCode}>
+                                    </input>
+                                    <div className="courses-page-content-layout-form-invite-code-input-icon"
+                                         onClick={() => {
+                                             navigator.clipboard.writeText(document.getElementById('courses-page-content-layout-form-invite-code-input').value)
+                                             toast.success("Код скопирован!")
+                                         }
+                                         }/>
                                 </div>
                                 <div className="my-lessons-page-content-form-header">{courseData.title}</div>
                                 <div className="my-lessons-page-content-form-description">{courseData.description}
@@ -132,6 +143,7 @@ const MyLessons = () => {
         //         </div>
         //     </div>
         // </div>
+
     );
 };
 

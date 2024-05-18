@@ -9,7 +9,7 @@ import CourseForm from "../components/courseForm/courseForm";
 import toast from "react-hot-toast";
 import CourseService from "../API/services/CourseService";
 import {AuthContext} from "../context/AuthContext";
-import InviteCodeForm from "../components/inviteCodeForm/inviteCodeForm";
+
 
 const Courses = () => {
     const data = useLoaderData();
