@@ -77,7 +77,7 @@ const Login = () => {
                                         console.log("THEN", response)
                                         if (response.data) {
                                             localStorage.setItem('auth', response.data.message);
-                                            setAuthData({...authData, authToken: response.data.message});
+                                            setAuthData({...authData, authToken: response.data.message, role: response.data.role});
                                             setIsAuth(true)
                                         }
                                     }).catch(response => {

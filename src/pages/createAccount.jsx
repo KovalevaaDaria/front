@@ -9,7 +9,7 @@ import AuthService from "../API/services/AuthService";
 const CreateAccount = () => {
     const navigate = useNavigate();
     const [pageState, setPageState] = useState(false);
-    const {setIsAuth, setAuthData} = useContext(AuthContext);
+    const {setIsAuth, setAuthData, authData} = useContext(AuthContext);
     const [error, setError] = useState("")
     const [isLoading, setIsLoading] = useState(false)
     const [credentials, setCredentials] = useState({
@@ -116,7 +116,8 @@ const CreateAccount = () => {
                                         console.log("RESPONSE", response);
                                         if (response.status === 200) {
                                             setIsAuth(true);
-                                            localStorage.setItem('auth', response.data.message);
+                                            localStorage.setItem('auth', response.data.token);
+                                            setAuthData({...authData, authToken: response.data.token, role: response.data.role});
                                             navigate('/courses', {replace: true});
                                         } else {
                                             setError(response.status.toString() + ": " + response.error)

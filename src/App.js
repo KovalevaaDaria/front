@@ -29,7 +29,7 @@ export default function App() {
                     if (r.data.message) {
                         localStorage.removeItem('auth')
                     } else {
-                        setAuthData({...authData, authToken: authToken})
+                        setAuthData({...authData, authToken: authToken, role: r.data.role})
                         setIsAuth(true)
                     }
                 })

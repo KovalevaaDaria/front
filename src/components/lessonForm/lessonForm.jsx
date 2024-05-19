@@ -37,9 +37,9 @@ const LessonForm = ({create, isLoading}) => {
                 placeholder="Название урока"
             />
             <button className="MyInput-lesson-button"
-                    style={!checkData ? {background: "white", color: "#4880FF", border: "2px solid #4880FF"} : {}}
+                    style={!checkData || isLoading ? {background: "white", color: "#4880FF", border: "2px solid #4880FF"} : {}}
                     onClick={async (e) => addNewlesson(e)}
-                    disabled={!checkData}
+                    disabled={!checkData || isLoading}
             >{isLoading ?"Загрузка..." : "Создать урок"}</button>
         </form>
     );

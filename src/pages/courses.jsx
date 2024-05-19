@@ -9,6 +9,7 @@ import CourseForm from "../components/courseForm/courseForm";
 import toast from "react-hot-toast";
 import CourseService from "../API/services/CourseService";
 import {AuthContext} from "../context/AuthContext";
+import InviteCodeForm from "../components/inviteCodeForm/inviteCodeForm";
 
 
 const Courses = () => {
@@ -60,15 +61,40 @@ const Courses = () => {
             })
     }
 
+    const joinCourse = async (inviteCode) => {
+        setLoading(true)
+        await toast.promise(
+            CourseService.joinCourse({
+                inviteCode: inviteCode,
+                authToken: authData.authToken
+            }),
+            {
+                loading: 'Добавляю курс...',
+                success: <b>Курс добавлен!</b>,
+                error: <b>Не удалось добавить курс</b>,
+            }
+        )
+            .then((response) => {
+                setCourses([...courses, {title: response.data.title, uuid: response.data.uuid, imageUrl: response.data.imageUrl}])
+            })
+            .catch(() => {
+
+            })
+            .finally(() => {
+                setModal(false)
+                setLoading(false)
+            })
+    }
+
     useEffect(() => {
         setCourses(data);
     }, [data]);
 
-    return (
+    if (authData.role === "TEACHER") return (
         <div className="page-header">
             <SideMenu/>
             <MyModal visible={modal} setVisible={setModal}>
-                <CourseForm create={createCourse}/>
+                <CourseForm create={createCourse} isLoading={isLoading}/>
             </MyModal>
             <div className="content">
                 <NavBar hasText={false}/>
@@ -86,31 +112,32 @@ const Courses = () => {
                 </div>
             </div>
         </div>
-
+        )
 
         //Отображение страницы для студента
-        // <div className="page-header">
-        //     <SideMenu/>
-        //     <MyModal visible={modal} setVisible={setModal}>
-        //         <InviteCodeForm create={createCourse}/>
-        //     </MyModal>
-        //     <div className="content">
-        //         <NavBar hasText={false}/>
-        //         <div className="courses-page-wrap">
-        //             <div className="courses-page-content">
-        //                 <div className="courses-page-content-header">
-        //                     <h1 className="courses-page-title">Курсы</h1>
-        //                     <button className="courses-page-button-add-course" onClick={() => setModal(true)}>Добавить
-        //                         курс
-        //                     </button>
-        //                 </div>
-        //                 <div className="courses-page-content-layout">
-        //                     {/*<CardList cards={courses} remove={removeCourse} title={"На данный момент курсов нет..."}/>*/}
-        //                 </div>
-        //             </div>
-        //         </div>
-        //     </div>
-        // </div>
+    else return (
+        <div className="page-header">
+            <SideMenu/>
+            <MyModal visible={modal} setVisible={setModal}>
+                <InviteCodeForm join={joinCourse} isLoading={isLoading}/>
+            </MyModal>
+            <div className="content">
+                <NavBar hasText={false}/>
+                <div className="courses-page-wrap">
+                    <div className="courses-page-content">
+                        <div className="courses-page-content-header">
+                            <h1 className="courses-page-title">Курсы</h1>
+                            <button className="courses-page-button-add-course" onClick={() => setModal(true)}>Добавить
+                                курс
+                            </button>
+                        </div>
+                        <div className="courses-page-content-layout">
+                            <CardList cards={courses} title={"На данный момент курсов нет..."}/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     );
 };
 

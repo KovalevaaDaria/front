@@ -10,7 +10,11 @@ const CardItem = (props) => {
     return (
         <div className="card-item">
             <div className="card-item-img-container">
-                <div className="card-item-bin" onClick={async (e) => props.remove(props.card, e)}></div>
+                {props.remove?
+                    <div className="card-item-bin" onClick={async (e) => props.remove(props.card, e)}></div>
+                    :
+                        <></>
+                    }
                 <img src={props.card.imageUrl} className="card-item-image" alt={props.card.name} loading={"lazy"} onLoad={() => setLoading(false)}/>
             </div>
             <div className="card-item-body">

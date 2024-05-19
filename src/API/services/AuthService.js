@@ -39,7 +39,8 @@ export default class AuthService {
                 role: role,
                 surname: surname,
                 name: name,
-                patronymic: patronymic
+                patronymic: patronymic,
+                avatar: "https://i.ibb.co/JkW4tYy/Image-2.jpg"
             })
             .then(function (response) {
                 return response
@@ -47,7 +48,9 @@ export default class AuthService {
             .catch(function (error) {
                 console.log("ERROR", error)
                 if (error.response) {
-                    return {status: error.response.status, error: error.response.data.message}
+                    if (!error.response.data.message)
+                    return {status: error.response.status, error: error.message}
+                    else return {status: error.response.status, error: error.response.data.message}
                 } else if (error.request) {
                     console.log(error)
                     return {status: 599, error: "Connection Error"}

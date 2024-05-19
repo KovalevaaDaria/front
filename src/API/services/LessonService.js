@@ -26,6 +26,14 @@ export default class LessonService {
             })
     }
 
+    static async getLessonByID({lessonUuid, authToken}) {
+        return await axios.get(`https://bauman-class.ru/api/v1/lessons/${lessonUuid}`, {
+            headers: {
+                Authorization: "Bearer " + authToken
+            }
+        })
+    }
+
     static async addLesson({title, description, courseUuid, authToken}) {
         return await axios.post(`https://bauman-class.ru/api/v1/lessons`,
             {
@@ -56,6 +64,18 @@ export default class LessonService {
 
     static async deleteLesson({lessonUuid, authToken}) {
         return await axios.delete(`https://bauman-class.ru/api/v1/lessons/${lessonUuid}`,
+            {
+                headers: {
+                    Authorization: "Bearer " + authToken
+                }
+            })
+    }
+
+    static async editDescription({description, lessonUuid, authToken}) {
+        return await axios.patch(`https://bauman-class.ru/api/v1/lessons/${lessonUuid}/description`,
+            {
+                description: description
+            },
             {
                 headers: {
                     Authorization: "Bearer " + authToken

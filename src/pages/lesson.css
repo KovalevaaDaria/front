@@ -68,6 +68,7 @@
     padding: 1em;
     resize: none;
     border: 2px solid #D5D5D5;
+    font-family: "Nunito Sans", sans-serif;
 }
 
 .lesson-page-content-form-description-button {
@@ -192,9 +193,10 @@
     height: 162px;
     border-radius: 14px;
     padding-inline: 10px;
-    font-size: 16px;
+    font-size: 17px;
     padding: 1em;
     resize: none;
     border: 2px solid #D5D5D5;
+    font-family: "Nunito Sans", sans-serif;
 }
 

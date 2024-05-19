@@ -40,4 +40,13 @@ export default class CourseService {
         })
         return response
     }
+
+    static async joinCourse({inviteCode, authToken}) {
+        const response = await axios.get(`https://bauman-class.ru/api/v1/courses/join/${inviteCode}`, {
+            headers: {
+                Authorization: "Bearer " + authToken
+            }
+        })
+        return response
+    }
 }

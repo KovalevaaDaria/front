@@ -14,7 +14,14 @@ const LessonListItem = (props) => {
                 </div>
             </div>
             <div className="post__btns">
-                <button className="my-lesson-remove-button" onClick={(e) => props.remove(props.lesson, e)}></button>
+                {
+                    props.remove ?
+                        <button className="my-lesson-remove-button"
+                                onClick={(e) => props.remove(props.lesson, e)}></button>
+                        :
+                        <></>
+                }
+
             </div>
         </div>
     );

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import MyInput from "../UI/input/MyInput";
 import "./courseForm.css";
 
-const CourseForm = ({create}) => {
+const CourseForm = ({create, isLoading}) => {
     const [course, setCourse] = useState({title: '', desc: ''})
     const [checkData, setCheckData] = useState(false)
 
@@ -45,10 +45,10 @@ const CourseForm = ({create}) => {
                 placeholder="Описание курса"
             />
             <button className="MyInput-button"
-                    style={!checkData ? {background: "white", color: "#4880FF", border: "2px solid #4880FF"} : {}}
-                    disabled={!checkData}
+                    style={!checkData || isLoading ? {background: "white", color: "#4880FF", border: "2px solid #4880FF"} : {}}
+                    disabled={!checkData || isLoading}
                     onClick={async (e
-                    ) => addNewCourse(e)}>Создать курс</button>
+                    ) => addNewCourse(e)}>{isLoading? "Загрузка..." : "Создать курс"}</button>
         </form>
     );
 };

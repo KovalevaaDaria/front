@@ -19,8 +19,8 @@ const NewQuestionItem = (props) => {
                         <input
                             type={"checkbox"}
                             defaultChecked={true}
-                            checked={props.question.type === "MANUAL_CHECK"}
-                            onClick={() => props.setQuestion({...props.question, type: "MANUAL_CHECK"})}
+                            checked={props.question.type === "AUTO_CHECK"}
+                            onClick={() => props.setQuestion({...props.question, type: "AUTO_CHECK"})}
                             id={"checkTeacherAnswerCheckbox" + props.question.id}
                             className="add-new-test-form-container-list-item-column-1-body-checkbox"></input>
                         <label htmlFor={"checkTeacherAnswerCheckbox" + props.question.id} className="add-new-test-form-container-list-item-column-1-body-text"

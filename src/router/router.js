@@ -14,6 +14,7 @@ import {lessonsLoader} from "../API/loaders/lessonsLoader";
 import {coursesLoader} from "../API/loaders/coursesLoader";
 import Test from "../pages/test";
 import {accountLoader} from "../API/loaders/accountLoader";
+import {testsLoader} from "../API/loaders/testsLoader";
 
 export const router = (isLoggedIn, authData, setModal, setError, setAuthData, setIsAuth) => createBrowserRouter([
 
@@ -46,7 +47,8 @@ export const router = (isLoggedIn, authData, setModal, setError, setAuthData, se
                             {path: ':lesson', component: <Outlet/>
                                 ,
                                 children: [
-                                    {path: '', element: <LessonPage/>},
+                                    {path: '', element: <LessonPage/>, loader: async ({ params }) => {
+                                            return testsLoader({params, authData, setModal, setError})}},
                                     {path: ':test', element: <Test/>},
                                     {path: 'add-new-test', element: <AddNewTest/>}
                                 ]

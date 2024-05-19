@@ -2,7 +2,7 @@ import AuthService from "../services/AuthService";
 
 
 export const accountLoader = async ({authData, setModal, setError, setIsAuth}) => {
-    console.log(`fetching api data for account using token ${authData.authToken}}`);
+    console.log(`fetching api data for account using token ${authData.authToken}`);
 
     return await AuthService.getUserInfo({authToken: authData.authToken})
         .then(function (response) {

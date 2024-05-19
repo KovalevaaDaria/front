@@ -66,23 +66,23 @@ const Account = () => {
                                 <div className="account-page-content-form-all-rows">
                                     <div className="account-page-content-form-row-line-1">
                                         <div className="account-page-content-form-row-line-1-item-1">
-                                            <p className="account-page-content-form-row-line-1-item-1-par">Имя</p>
+                                            <p className="account-page-content-form-row-line-1-item-1-par">Фамилия</p>
                                             <input autoComplete="on"
-                                                   style={account.name === "" ? {borderColor: "#EF3826"} : null}
-                                                   className="account-page-content-form-row-line-1-item-1-input"
-                                                   placeholder="Имя"
-                                                   value={account.name}
-                                                   onChange={e => setAccount({...account, name: e.target.value})}
-                                            />
-                                        </div>
-                                        <div className="account-page-content-form-row-line-1-item-2">
-                                            <p className="account-page-content-form-row-line-1-item-2-par">Фамилия</p>
-                                            <input autoComplete="on"
-                                                   className="account-page-content-form-row-line-1-item-2-input"
                                                    placeholder="Фамилия"
                                                    style={account.surname === "" ? {borderColor: "#EF3826"} : null}
                                                    value={account.surname}
                                                    onChange={e => setAccount({...account, surname: e.target.value})}
+                                                   className="account-page-content-form-row-line-1-item-1-input"
+                                                  />
+                                        </div>
+                                        <div className="account-page-content-form-row-line-1-item-2">
+                                            <p className="account-page-content-form-row-line-1-item-2-par">Имя</p>
+                                            <input autoComplete="on"
+                                                   className="account-page-content-form-row-line-1-item-2-input"
+                                                   style={account.name === "" ? {borderColor: "#EF3826"} : null}
+                                                   placeholder="Имя"
+                                                   value={account.name}
+                                                   onChange={e => setAccount({...account, name: e.target.value})}
                                             />
 
                                         </div>
