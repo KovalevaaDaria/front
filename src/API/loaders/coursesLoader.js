@@ -2,7 +2,7 @@ import CourseService from "../services/CourseService";
 
 
 export const coursesLoader = async ({authData, setModal, setError, setIsAuth}) => {
-    console.log(`fetching api data for courses using token ${authData.authToken}}`);
+    console.log(`fetching api data for courses using token ${authData.authToken}`);
 
     return await CourseService.getAll({authToken: authData.authToken})
         .then(function (response) {

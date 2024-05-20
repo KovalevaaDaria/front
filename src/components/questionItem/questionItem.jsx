@@ -63,10 +63,10 @@ const QuestionItem = (props) => {
             {props.isPassed ?
                 <MyInput className="test-page-content-form-question-input"
                          placeholder={"Ваш ответ"}
-                         value={props.question.personAnswer}
+                         value={props.question.studentAnswer}
                          disabled={props.isPassed}
                          style={
-                             props.question.personQuestionMark ?
+                             props.question.studentQuestionMark ?
                                  {border: "1px solid #00A040", background: "#06C65320"} :
                                  {border: "1px solid #EF3826", background: "#EF382630"}
                          }
@@ -74,8 +74,8 @@ const QuestionItem = (props) => {
                 :
                 <MyInput className="test-page-content-form-question-input"
                          placeholder={"Ваш ответ"}
-                         value={props.question.personAnswer}
-                         onChange={e => props.setQuestion({...props.question, personAnswer: e.target.value})}
+                         value={props.question.studentAnswer}
+                         onChange={e => props.setQuestion({...props.question, studentAnswer: e.target.value})}
                 />
             }
 

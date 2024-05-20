@@ -1,15 +1,10 @@
 import TestService from "../services/TestService";
-import LessonService from "../services/LessonService";
 
 
-export const testsLoader = async ({params, authData, setModal, setError}) => {
+export const questionsLoader = async ({params, authData, setModal, setError}) => {
     console.log(`fetching api data from lesson ${params.lesson} using token ${authData.authToken}`);
-    const lessonData = await LessonService.getLessonByID({
-        lessonUuid: params.lesson,
-        authToken: authData.authToken
-    });
-    const response = await TestService.getAll({
-        lessonUuid: params.lesson,
+    const response = await TestService.getTestByID({
+        testUuid: params.test,
         authToken: authData.authToken
     })
         .then(function (response) {
@@ -26,10 +21,7 @@ export const testsLoader = async ({params, authData, setModal, setError}) => {
             }
         })
     if (response.status === 200) {
-        return {
-            testData: (await response).data,
-            lessonData: (await lessonData).data
-        }
+        return (await response).data
     } else {
         setError(response.status.toString() + ": " + response.error)
         setModal(true)

@@ -1,4 +1,5 @@
 import axios from "axios";
+axios.defaults.timeout = 60000;
 
 export default class TestService {
     static async getAll({lessonUuid, authToken}) {
@@ -20,6 +21,26 @@ export default class TestService {
                     return {status: 599, error: "Connection Error"}
                 } else {
                     return {status: 520, error: "Unknown Error"}
+                }
+            })
+    }
+
+    static async getTestByID({testUuid, authToken}) {
+        return await axios.get(`https://bauman-class.ru/api/v1/tests/${testUuid}`, {
+            headers: {
+                Authorization: "Bearer " + authToken
+            }
+        })
+    }
+
+    static async checkTest({testUuid, answers, authToken}) {
+        return await axios.post(`https://bauman-class.ru/api/v1/users/tests/${testUuid}/check`,
+            {
+                answers: answers
+            },
+            {
+                headers: {
+                    Authorization: "Bearer " + authToken
                 }
             })
     }

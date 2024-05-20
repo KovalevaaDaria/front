@@ -15,6 +15,7 @@ import {coursesLoader} from "../API/loaders/coursesLoader";
 import Test from "../pages/test";
 import {accountLoader} from "../API/loaders/accountLoader";
 import {testsLoader} from "../API/loaders/testsLoader";
+import {questionsLoader} from "../API/loaders/questionsLoader";
 
 export const router = (isLoggedIn, authData, setModal, setError, setAuthData, setIsAuth) => createBrowserRouter([
 
@@ -49,7 +50,8 @@ export const router = (isLoggedIn, authData, setModal, setError, setAuthData, se
                                 children: [
                                     {path: '', element: <LessonPage/>, loader: async ({ params }) => {
                                             return testsLoader({params, authData, setModal, setError})}},
-                                    {path: ':test', element: <Test/>},
+                                    {path: ':test', element: <Test/>, loader: async ({ params }) => {
+                                            return questionsLoader({params, authData, setModal, setError})}},
                                     {path: 'add-new-test', element: <AddNewTest/>}
                                 ]
                             }
