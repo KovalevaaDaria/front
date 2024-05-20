@@ -7,6 +7,7 @@ import {useLoaderData, useNavigate, useParams} from "react-router-dom";
 import toast from "react-hot-toast";
 import TestService from "../API/services/TestService";
 import {AuthContext} from "../context/AuthContext";
+import CardList from "../components/cardList/cardList";
 
 
 const Test = () => {
@@ -18,8 +19,8 @@ const Test = () => {
 
     const [checkData, setCheckData] = useState(false)
     const [isPassed, setIsPassed] = useState(testData.passed)
-
-    const [questions, setQuestions] = useState(testData.questions.map(q => {return {...q, studentAnswer: ""}}));
+    const [students, setStudents] = useState(testData.students || [])
+    const [questions, setQuestions] = useState((testData.questions || []).map(q => {return {...q, studentAnswer: ""}}));
     const [isLoading, setLoading] = useState(false);
 
     const [passed, setPassed] = useState(testData.questions);
@@ -71,8 +72,27 @@ const Test = () => {
 
 
     }
+    if (authData.role === "TEACHER") return (
+        <div className="page-header">
+            <SideMenu/>
+            <div className="content">
+                <NavBar course={params.course}/>
+                <div className="courses-page-wrap">
+                    <div className="courses-page-content">
+                        <div className="courses-page-content-header">
+                            <h1 className="courses-page-title">{testData.title}</h1>
+                        </div>
+                        <div className="courses-page-content-layout">
+                            <CardList cards={students} student={true} title={"На данный момент нет студентов, прошедших тест..."}/>
 
-    return (
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+
+    else return (
         !isPassed ?
             <div className="page-header">
                 <SideMenu/>

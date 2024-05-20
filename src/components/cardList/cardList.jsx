@@ -2,7 +2,7 @@ import React from 'react';
 import CardItem from "../cardItem/cardItem";
 import "./cardList.css";
 
-const CardList = ({cards, remove, title}) => {
+const CardList = ({cards, remove, title, student}) => {
 
     if (!cards.length) {
         return (
@@ -16,9 +16,9 @@ const CardList = ({cards, remove, title}) => {
 
     return (
 
-        <div className="card-list">
+        <div className={"card-list" + (student? "-student" : "")}>
             {cards.map((card, index) =>
-                <CardItem remove={remove} card={card} key={index}/>
+                <CardItem remove={remove} student={student} card={card} key={index}/>
             )}
         </div>
     );
