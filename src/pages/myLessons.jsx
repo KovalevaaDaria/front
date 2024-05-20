@@ -64,7 +64,7 @@ const MyLessons = () => {
     }
 
 
-    if (authData.role === "TEACHER") return (
+    if (authData.role !== "TEACHER") return (
         <div className="page-header">
             <SideMenu/>
             <div className="content">
