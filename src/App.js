@@ -36,8 +36,6 @@ export default function App() {
                 .catch(r => {
                     console.log("ERROR")
                     localStorage.removeItem('auth')
-                    setError("Error")
-                    setModal(true)
                 })
                 .finally(() => {
                     console.log("LOADED!")
