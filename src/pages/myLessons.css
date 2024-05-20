@@ -61,16 +61,17 @@
     background-color: transparent;
     border: 1px solid white;
     border-radius: 12px;
-    height: 35px;
+    height: 46px;
     color: white;
-    font-size: 16px;
+    font-weight: 900;
+    font-size: 20px;
     padding-inline: 1vw;
-    width: 120px;
+    width: 130px;
 }
 
 .courses-page-content-layout-form-invite-code-input-icon {
     content: url("../../public/img/copy.svg");
-    width: 25px;
+    width: 30px;
     cursor: pointer;
 }
 
