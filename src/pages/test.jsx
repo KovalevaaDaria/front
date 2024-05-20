@@ -61,7 +61,7 @@ const Test = () => {
             }
         )
             .then((response) => {
-                navigate('')
+                navigate(0)
             })
             .catch(() => {
 
