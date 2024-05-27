@@ -145,7 +145,7 @@ const CreateAccount = () => {
 
                         <div className="create_account_form__login">
                             <div className="create_account_form__login__text">
-                                <p className="create_account_form__login__par">Логин</p>
+                                <p className="create_account_form__login__par">Почта</p>
                             </div>
                             <input autoComplete="on" type="email"
                                    value={credentials.email}

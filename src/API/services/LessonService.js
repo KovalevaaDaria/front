@@ -32,6 +32,20 @@ export default class LessonService {
                 Authorization: "Bearer " + authToken
             }
         })
+            .then(function (response) {
+                return response
+            })
+            .catch(function (error) {
+                console.log("ERROR", error)
+                if (error.response) {
+                    return {status: error.response.status, error: error.response.data.message}
+                } else if (error.request) {
+                    console.log(error)
+                    return {status: 599, error: "Connection Error"}
+                } else {
+                    return {status: 520, error: "Unknown Error"}
+                }
+            })
     }
 
     static async addLesson({title, description, courseUuid, authToken}) {

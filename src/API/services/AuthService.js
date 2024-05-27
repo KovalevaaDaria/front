@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.timeout = 3000;
+axios.defaults.timeout = 5000;
 
 export default class AuthService {
     static async getUserInfo({authToken}) {
@@ -11,6 +11,7 @@ export default class AuthService {
                 }
             })
     }
+
     static async login({email, password}) {
         return await axios.post(`https://bauman-class.ru/api/v1/login`,
             {
@@ -18,7 +19,7 @@ export default class AuthService {
                 password: password
             })
             .then(function (response) {
-            return response
+                return response
             })
             .catch(function (error) {
                 if (error.response) {
@@ -49,7 +50,7 @@ export default class AuthService {
                 console.log("ERROR", error)
                 if (error.response) {
                     if (!error.response.data.message)
-                    return {status: error.response.status, error: error.message}
+                        return {status: error.response.status, error: error.message}
                     else return {status: error.response.status, error: error.response.data.message}
                 } else if (error.request) {
                     console.log(error)
@@ -59,4 +60,19 @@ export default class AuthService {
                 }
             })
     }
-}
+
+    static async changeAccountData({account, authToken}) {
+        return await axios.patch(
+            `https://bauman-class.ru/api/v1/profile`,
+            {
+                name: account.name,
+                surname: account.surname,
+                patronymic: account.patronymic,
+            },
+            {
+                headers: {
+                    Authorization: "Bearer " + authToken
+                }
+            }
+        )}
+    }

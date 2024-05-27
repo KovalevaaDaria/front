@@ -36,7 +36,7 @@ const Login = () => {
                         <p className="log_in_form__par">Пожалуйста введите свои данные, чтобы продолжить</p>
                     </div>
                     <div className="log_in_form__login">
-                        <p className="log_in_form__login__par">Логин</p>
+                        <p className="log_in_form__login__par">Почта</p>
                         <input autoComplete="on"
                                required={true}
                                type="email"

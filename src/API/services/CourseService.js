@@ -2,7 +2,6 @@ import axios from "axios";
 
 export default class CourseService {
 
-
     static async createCourse({title, description, authToken}) {
         return await axios.post(`https://bauman-class.ru/api/v1/courses`, {
             title: title,
@@ -33,20 +32,19 @@ export default class CourseService {
     }
 
     static async getCourseByID({courseUuid, authToken}) {
-        const response = await axios.get(`https://bauman-class.ru/api/v1/courses/${courseUuid}`, {
+        return await axios.get(`https://bauman-class.ru/api/v1/courses/${courseUuid}`, {
             headers: {
                 Authorization: "Bearer " + authToken
             }
         })
-        return response
     }
 
     static async joinCourse({inviteCode, authToken}) {
-        const response = await axios.get(`https://bauman-class.ru/api/v1/courses/join/${inviteCode}`, {
+        return await axios.get(`https://bauman-class.ru/api/v1/courses/join/${inviteCode}`, {
             headers: {
                 Authorization: "Bearer " + authToken
             }
         })
-        return response
+
     }
 }

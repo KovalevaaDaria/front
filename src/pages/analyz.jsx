@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import SideMenu from "../components/sideMenu/sideMenu";
 import NavBar from "../components/navBar/navBar";
 import "./analyz.css"
@@ -9,50 +9,75 @@ import {
     LineElement,
     CategoryScale,
     LinearScale,
-    PointElement
+    PointElement,
+    Legend,
+    Title,
+    Tooltip,
+    Filler
 } from "chart.js";
 
 ChartJS.register(
     LineElement,
     CategoryScale,
     LinearScale,
-    PointElement
+    PointElement,
+    Legend,
+    Title,
+    Tooltip,
+    Filler
 )
+
+export  const options = {
+    responsive: true,
+    plugins: {
+        title: {
+            display: true,
+            text: 'Статистика по тестам',
+        }
+    },
+    scales: {
+        x: {
+            grid: {
+                display: false
+            }
+        },
+        y: {
+            min: 0,
+            max: 100,
+            ticks: {
+                stepSize: 20,
+                callback: value => value + '%'
+            }
+        }
+    }
+};
 
 const Analyz = () => {
     const params = useParams();
-
-    const data = {
-        labels: ["Тест 1", "Тест 2", "Тест 3", "Тест 4", "Тест 5", "Тест 6", "Тест 7", "Тест 8"],
+    const [dataSets, setDataSet] = useState({myDataSet: [50, 30, 90, 20, 80, 10, 5, 100
+], courseDataSet: [50, 50, 90, 70, 80, 70, 60, 50]
+})
+    const [data, setData] = useState({
+        labels: dataSets.myDataSet.map((d, index) => {
+            return "Тест " + (index + 1)
+        }),
         datasets: [{
-            data: [50, 30, 90, 20, 80, 10, 5, 100],
-            backgroundColor: 'transperent',
+            label: 'Моя Статистика',
+            data: dataSets.myDataSet,
+            fill: true,
+            backgroundColor: '#4880FF50',
             borderColor: '#4880FF',
-            pointBorderColor: 'transparent',
-            pointBorderWidth: 10,
-            tension: 0.5,
-        }]
-    };
-    const options = {
-        plugins: {
-            legend: true
+            tension: 0.5
         },
-        scales: {
-            x: {
-                grid: {
-                    display: false
-                }
-            },
-            y: {
-                min: 0,
-                max: 100,
-                ticks: {
-                    stepSize: 20,
-                    callback: value => value + '%'
-                }
-            }
-        }
-    };
+            {
+                label: 'Статистика Курса',
+                data: dataSets.courseDataSet,
+                fill: true,
+                backgroundColor: '#DBA5FF50',
+                borderColor: '#DBA5FF',
+                tension: 0.5
+            }]
+    })
 
     return (
             <div className="page-header">
@@ -64,18 +89,11 @@ const Analyz = () => {
                             <h1 className="analyz-page-title">Аналитика по курсу</h1>
                         </div>
                         <div className="analyz-page-content-graphics-wrapp">
-                            <div className="analyz-page-content-form-1" style={{width: '1138px', height: '300px'}}>
+                            <div className="analyz-page-content-form-1">
                                 <div className="analyz-page-content-form-wrapper-1">
                                     <div className="analyz-page-content-form-wrapper-graphic-1">
-                                        <h1 className="analyz-graphic-1-title">Статистика по тестам</h1>
                                         <Line data={data} options={options}/>
                                     </div>
-                                </div>
-                            </div>
-
-                            <div className="analyz-page-content-form-2">
-                                <div className="analyz-page-content-form-wrapper-1">
-
                                 </div>
                             </div>
                         </div>

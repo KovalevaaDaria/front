@@ -7,6 +7,8 @@ import {AuthContext} from "../context/AuthContext";
 
 import 'react-loading-skeleton/dist/skeleton.css'
 import Skeleton from "react-loading-skeleton";
+import toast from "react-hot-toast";
+import AuthService from "../API/services/AuthService";
 
 
 const Account = () => {
@@ -15,8 +17,27 @@ const Account = () => {
 
     const [account, setAccount] = useState(accountData)
     const [checkData, setCheckData] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
 
-    const {setIsAuth} = useContext(AuthContext);
+    const {setIsAuth, authData} = useContext(AuthContext);
+
+    const saveAccountData = async (account) => {
+        await toast.promise(
+            AuthService.changeAccountData({
+                account: account,
+                authToken: authData.authToken
+            }),
+            {
+                loading: 'Обновляю данные...',
+                success: <b>Данные обновлены!</b>,
+                error: <b>Ошибка. Не удалось обновить данные!</b>,
+            }
+        ).then(() =>
+            navigate(0)
+        ).catch(() => {
+
+        })
+    }
 
     const checkIfValid = () => {
         if ( JSON.stringify(account) === JSON.stringify(accountData)) {
@@ -104,6 +125,7 @@ const Account = () => {
                                             <input autoComplete="on"
                                                    className="account-page-content-form-row-line-2-item-2-input"
                                                    placeholder="jaskolski.brent@yahoo.com"
+                                                   disabled={true}
                                                    style={account.email === "" ? {borderColor: "#EF3826"} : null}
                                                    value={account.email}
                                                    onChange={e => setAccount({...account, email: e.target.value})}
@@ -117,6 +139,7 @@ const Account = () => {
                                             <input autoComplete="on"
                                                    className="account-page-content-form-row-line-3-item-1-input"
                                                    placeholder="-"
+                                                   disabled={true}
                                                    style={account.group === "" ? {borderColor: "#EF3826"} : null}
                                                    value={account.group}
                                                    onChange={e => setAccount({...account, group: e.target.value})}
@@ -127,6 +150,7 @@ const Account = () => {
                                             <input autoComplete="on"
                                                    className="account-page-content-form-row-line-3-item-2-input"
                                                    placeholder="Преподаватель"
+                                                   disabled={true}
                                                    style={account.role === "" ? {borderColor: "#EF3826"} : null}
                                                    value={account.role}
                                                    readOnly={true}
@@ -135,9 +159,16 @@ const Account = () => {
                                     </div>
                                     <div className="account-page-content-form-row-button-container">
                                         <button className="account-page-content-form-row-button"
-                                                style={!checkData ? {background: "white", color: "#4880FF", border: "2px solid #4880FF"} : {}}
-                                                disabled={!checkData}
-                                                onClick={() => navigate("/courses")}>Сохранить
+                                                style={(!checkData || isLoading)? {background: "white", color: "#4880FF", border: "2px solid #4880FF"} : {}}
+                                                disabled={!checkData || isLoading}
+                                                onClick={async () => {
+                                                    setIsLoading(true)
+                                                    await saveAccountData(account)
+                                                        .then(() => {
+                                                            setIsLoading(false)
+                                                        })
+                                                    }
+                                                }>{isLoading ? 'Загрузка...' : 'Сохранить'}
                                         </button>
                                     </div>
                                 </div>

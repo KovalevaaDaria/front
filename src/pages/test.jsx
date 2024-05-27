@@ -42,7 +42,6 @@ const Test = () => {
     }, [questions]);
 
     const sendAnswers = async () => {
-        setLoading(true)
         await toast.promise(
             TestService.checkTest({
                 testUuid: params.test,
@@ -60,7 +59,7 @@ const Test = () => {
                 error: <b>Не удалось отправить ответы!</b>,
             }
         )
-            .then((response) => {
+            .then(() => {
                 navigate(0)
             })
             .catch(() => {
@@ -122,6 +121,7 @@ const Test = () => {
                                                 } : {}}
                                                 disabled={!checkData || isLoading}
                                                 onClick={async () => {
+                                                    setLoading(true)
                                                     await sendAnswers()
                                                 }}>{isLoading? "Загрузка..." : "Завершить"}
                                         </button>
