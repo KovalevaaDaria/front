@@ -64,20 +64,24 @@ export  const options = {
 const Analyz = () => {
     const params = useParams();
     const loaderData = useLoaderData();
+    const sortedData = loaderData.arrayOfUserTests?.toSorted((a, b) => {
+        return a.title.localeCompare(b.title);
+    });
+
 
     const [dataSets, setDataSet] = useState({
-        myDataSet: (loaderData.arrayOfUserTests)?.map(userTest => {
+        myDataSet: sortedData?.map(userTest => {
             return userTest.percentageOfTest;
         }),
-        courseDataSet: loaderData.arrayOfUserTests?.map(userTest => {
+        courseDataSet: sortedData?.map(userTest => {
             return userTest.averageTestMark;
         })
 })
     const [data, setData] = useState(
         dataSets.myDataSet?
         {
-        labels: dataSets.courseDataSet?.map((d, index) => {
-            return "Тест " + (index + 1)
+        labels: sortedData?.map((d) => {
+            return d.title
         }),
         datasets: [
             {
