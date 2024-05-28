@@ -73,7 +73,7 @@ const Analyz = () => {
 
     const [dataSets, setDataSet] = useState({
         myDataSet: sortedData?.map(userTest => {
-            return (userTest.percentageOfTest || undefined);
+            return userTest.percentageOfTest;
         }),
         courseDataSet: sortedData?.map(userTest => {
             return userTest.averageTestMark;
