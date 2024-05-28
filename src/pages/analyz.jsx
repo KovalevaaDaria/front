@@ -15,6 +15,7 @@ import {
     Tooltip,
     Filler
 } from "chart.js";
+import {AuthContext} from "../context/AuthContext";
 
 ChartJS.register(
     LineElement,
@@ -64,6 +65,7 @@ export  const options = {
 const Analyz = () => {
     const params = useParams();
     const loaderData = useLoaderData();
+    const {authData} = useContext(AuthContext);
     const sortedData = loaderData.arrayOfUserTests?.toSorted((a, b) => {
         return a.title.localeCompare(b.title);
     });
@@ -71,14 +73,14 @@ const Analyz = () => {
 
     const [dataSets, setDataSet] = useState({
         myDataSet: sortedData?.map(userTest => {
-            return userTest.percentageOfTest;
+            return (userTest.percentageOfTest || undefined);
         }),
         courseDataSet: sortedData?.map(userTest => {
             return userTest.averageTestMark;
         })
 })
     const [data, setData] = useState(
-        dataSets.myDataSet?
+        authData.role !== "TEACHER"?
         {
         labels: sortedData?.map((d) => {
             return d.title
@@ -103,8 +105,8 @@ const Analyz = () => {
         ]
     } :
             {
-                labels: dataSets.courseDataSet?.map((d, index) => {
-                    return "Тест " + (index + 1)
+                labels: sortedData?.map((d) => {
+                    return d.title
                 }),
                 datasets: [
                     {
