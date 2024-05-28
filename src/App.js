@@ -47,26 +47,47 @@ export default function App() {
         }
     }, []);
 
-    return (
-                isLoading?
-                    <><div>Loading...</div></>
-                    :
-                <AuthContext.Provider value={{
-                    isAuth,
-                    setIsAuth,
-                    isLoading,
-                    setIsLoading,
-                    authData,
-                    setAuthData,
-                    setModal,
-                    setError
-                }}>
-                    <MyModal visible={modal} setVisible={setModal}>
-                        <ErrorForm error={error} setModal={setModal}/>
-                    </MyModal>
-                    <div><Toaster/></div>
-                    <RouterProvider router={router(isAuth, authData, setModal, setError, setAuthData, setIsAuth)}
-                                    fallbackElement={<></>}/>
-                </AuthContext.Provider>
-        );
+    if (window.innerWidth < 1000) {
+        return <div
+            style={{
+                width: '100%',
+                height: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                textAlign: 'center',
+                fontWeight: 'bold',
+                fontSize: "25px",
+                flexDirection: "column",
+                gap: "5vh"
+            }}>
+            <div className="homiak"></div>
+            МОБИЛЬНАЯ ВЕРСИЯ НЕДОСТУПНА...
+        </div>
     }
+
+    return (
+        isLoading ?
+            <>
+                <div>Loading...</div>
+            </>
+            :
+            <AuthContext.Provider value={{
+                isAuth,
+                setIsAuth,
+                isLoading,
+                setIsLoading,
+                authData,
+                setAuthData,
+                setModal,
+                setError
+            }}>
+                <MyModal visible={modal} setVisible={setModal}>
+                    <ErrorForm error={error} setModal={setModal}/>
+                </MyModal>
+                <div><Toaster/></div>
+                <RouterProvider router={router(isAuth, authData, setModal, setError, setAuthData, setIsAuth)}
+                                fallbackElement={<></>}/>
+            </AuthContext.Provider>
+    );
+}

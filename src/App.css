@@ -17,3 +17,10 @@ h1, h2, h3, h4, h5, h6 {
 button {
   cursor: pointer;
 }
+
+.homiak {
+  content: url("../public/img/Homiak.png");
+  width: 50vw;
+  height: 50vw;
+
+}
