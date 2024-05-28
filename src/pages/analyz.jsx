@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import SideMenu from "../components/sideMenu/sideMenu";
 import NavBar from "../components/navBar/navBar";
 import "./analyz.css"
@@ -66,18 +66,21 @@ const Analyz = () => {
     const loaderData = useLoaderData();
 
     const [dataSets, setDataSet] = useState({
-        myDataSet: loaderData.arrayOfUserTests?.map(userTest => {
+        myDataSet: (loaderData.arrayOfUserTests)?.map(userTest => {
             return userTest.percentageOfTest;
         }),
         courseDataSet: loaderData.arrayOfUserTests?.map(userTest => {
             return userTest.averageTestMark;
         })
 })
-    const [data, setData] = useState({
-        labels: dataSets.myDataSet.map((d, index) => {
+    const [data, setData] = useState(
+        dataSets.myDataSet?
+        {
+        labels: dataSets.courseDataSet?.map((d, index) => {
             return "Тест " + (index + 1)
         }),
-        datasets: [{
+        datasets: [
+            {
             label: 'Моя статистика',
             data: dataSets.myDataSet,
             fill: true,
@@ -85,15 +88,32 @@ const Analyz = () => {
             borderColor: '#4880FF',
             tension: 0.5
         },
+        {
+            label: 'Статистика по курсу',
+            data: dataSets.courseDataSet,
+            fill: true,
+            backgroundColor: '#DBA5FF50',
+            borderColor: '#DBA5FF',
+            tension: 0.5
+        }
+        ]
+    } :
             {
-                label: 'Статистика по курсу',
-                data: dataSets.courseDataSet,
-                fill: true,
-                backgroundColor: '#DBA5FF50',
-                borderColor: '#DBA5FF',
-                tension: 0.5
-            }]
-    })
+                labels: dataSets.courseDataSet?.map((d, index) => {
+                    return "Тест " + (index + 1)
+                }),
+                datasets: [
+                    {
+                        label: 'Статистика по курсу',
+                        data: dataSets.courseDataSet,
+                        fill: true,
+                        backgroundColor: '#DBA5FF50',
+                        borderColor: '#DBA5FF',
+                        tension: 0.5
+                    }
+                ]
+            }
+    )
 
     return (
             <div className="page-header">
