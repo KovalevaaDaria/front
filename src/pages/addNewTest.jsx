@@ -104,6 +104,7 @@ const AddNewTest = () => {
 
     return (
         <div className="add-new-test-wrapp">
+            <div className="add-new-test-back-icon" onClick={() => navigate("../")}></div>
             <div className="add-new-test-form">
                 <div className="add-new-test-form-container">
                     <div className="add-new-test-form-container-static-content">
@@ -147,7 +148,7 @@ const AddNewTest = () => {
                                     if (checkIfValid()) {
                                         await createTest()
                                     }
-                                }}>{isLoading? "Загрузка..." :"Добавить тест"}
+                                }}>{isLoading ? "Загрузка..." : "Добавить тест"}
                         </button>
                     </div>
                 </div>

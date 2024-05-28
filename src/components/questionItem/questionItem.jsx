@@ -33,7 +33,7 @@ const QuestionItem = (props) => {
                 <div className="test-page-content-form-question-title">Вопрос {props.number}</div>
                 {(props.question.type === "AI_CHECK" && props.isPassed)?
                     <Tooltip title={
-                        <span style={{ fontSize: "16px"}}>{props.question.chatAnswer}</span>
+                        <span style={{ fontSize: "16px"}}>{"Ответ проверен с помощью GigaChat"}</span>
                     }
 
                              slotProps={{

@@ -12,7 +12,6 @@ const CardItem = (props) => {
     if (props.student) return (
         <div
             className="card-item-student"
-            onClick={() => toast("navigate(props.card.userUuid)")}
         >
             <div className="card-item-img-container-student">
                 <img src={props.card.userUrl} className="card-item-image" alt={props.card.name} loading={"lazy"}

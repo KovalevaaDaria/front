@@ -47,4 +47,12 @@ export default class CourseService {
         })
 
     }
+
+    static async getCourseAnalytics({courseUuid, authToken}) {
+        return await axios.get(`https://bauman-class.ru/api/v1/users/${courseUuid}/tests/result`, {
+            headers: {
+                Authorization: "Bearer " + authToken
+            }
+        })
+    }
 }

@@ -41,7 +41,6 @@ export default function App() {
                     console.log("LOADED!")
                     setIsLoading(false)
                 })
-
         } else {
             console.log("NO AUTH IN LOCAL")
             setIsLoading(false)

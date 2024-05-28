@@ -16,6 +16,7 @@ import Test from "../pages/test";
 import {accountLoader} from "../API/loaders/accountLoader";
 import {testsLoader} from "../API/loaders/testsLoader";
 import {questionsLoader} from "../API/loaders/questionsLoader";
+import {analyticsLoader} from "../API/loaders/analyticsLoader";
 
 export const router = (isLoggedIn, authData, setModal, setError, setAuthData, setIsAuth) => createBrowserRouter([
 
@@ -38,7 +39,9 @@ export const router = (isLoggedIn, authData, setModal, setError, setAuthData, se
             {
                 path: ':course', element: <Outlet/>,
                 children: [
-                    {path: 'analytics', element: <Analyz/>},
+                    {path: 'analytics', element: <Analyz/>, loader: async ({ params }) => {
+                            return analyticsLoader({params, authData, setModal, setError})},
+                        errorElement: <Navigate to='../lessons'/>},
                     {path: 'lessons', component: <Outlet/>,
                         children: [
                             {path: '', element: <MyLessons/>, loader: async ({ params }) => {

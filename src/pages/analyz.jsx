@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import SideMenu from "../components/sideMenu/sideMenu";
 import NavBar from "../components/navBar/navBar";
 import "./analyz.css"
-import {useParams} from "react-router-dom";
+import {useLoaderData, useParams} from "react-router-dom";
 import {Line} from "react-chartjs-2";
 import {
     Chart as ChartJS,
@@ -29,10 +29,19 @@ ChartJS.register(
 
 export  const options = {
     responsive: true,
+    layout: {
+        padding: 35
+    },
+
     plugins: {
-        title: {
-            display: true,
-            text: 'Статистика по тестам',
+        legend: {
+            position: 'top',
+            labels: {
+                font: {
+                    size: 14,
+                    weight: 'bold'
+                }
+            },
         }
     },
     scales: {
@@ -54,15 +63,22 @@ export  const options = {
 
 const Analyz = () => {
     const params = useParams();
-    const [dataSets, setDataSet] = useState({myDataSet: [50, 30, 90, 20, 80, 10, 5, 100
-], courseDataSet: [50, 50, 90, 70, 80, 70, 60, 50]
+    const loaderData = useLoaderData();
+
+    const [dataSets, setDataSet] = useState({
+        myDataSet: loaderData.arrayOfUserTests?.map(userTest => {
+            return userTest.percentageOfTest;
+        }),
+        courseDataSet: loaderData.arrayOfUserTests?.map(userTest => {
+            return userTest.averageTestMark;
+        })
 })
     const [data, setData] = useState({
         labels: dataSets.myDataSet.map((d, index) => {
             return "Тест " + (index + 1)
         }),
         datasets: [{
-            label: 'Моя Статистика',
+            label: 'Моя статистика',
             data: dataSets.myDataSet,
             fill: true,
             backgroundColor: '#4880FF50',
@@ -70,7 +86,7 @@ const Analyz = () => {
             tension: 0.5
         },
             {
-                label: 'Статистика Курса',
+                label: 'Статистика по курсу',
                 data: dataSets.courseDataSet,
                 fill: true,
                 backgroundColor: '#DBA5FF50',

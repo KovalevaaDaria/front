@@ -85,7 +85,7 @@ const CreateAccount = () => {
 
                         <div className="create_account_form__password">
                             <div className="create_account_form__password__text">
-                                <p className="create_account_form__password__par">Отчество (Если есть)</p>
+                                <p className="create_account_form__password__par">Отчество</p>
                             </div>
                             <input autoComplete="on" type="patronymic" className="create_account_form__password__input"
                                    value={credentials.patronymic}

@@ -134,8 +134,9 @@
 }
 
 .lesson-page-content-form-tests-files-list {
+    margin-top: 5px;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     height: 372px;
     overflow-y: scroll;
 }
