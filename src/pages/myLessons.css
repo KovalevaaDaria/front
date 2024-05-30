@@ -36,11 +36,46 @@
     flex-direction: column;
     border-radius: 14px;
     color: white;
-    background: #4880FF;
+    background-image: url("../../public/img/background_my_lessons.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.courses-page-content-layout-form-invite-code {
+    display: flex;
+    flex-direction: row;
+    margin-top: 31px;
+    gap: 15px;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 20px;
+    padding-left: 39px;
+}
+
+.courses-page-content-layout-form-invite-code-title {
+    font-size: 20px;
+}
+
+.courses-page-content-layout-form-invite-code-input {
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 12px;
+    height: 40px;
+    color: white;
+    font-size: 16px;
+    padding-inline: 1vw;
+    width: 120px;
+}
+
+.courses-page-content-layout-form-invite-code-input-icon {
+    content: url("../../public/img/copy.svg");
+    width: 25px;
+    cursor: pointer;
 }
 
 .my-lessons-page-content-form-header {
-    margin-top: 140px;
+    margin-top: 69px;
     padding-left: 39px;
     font-size: 50px;
     font-weight: 900;
@@ -83,4 +118,9 @@
     background: transparent;
     font-size: 14px;
     font-weight: 600;
+}
+
+.my-lessons-page-content-list-button:hover {
+    color: white;
+    background-color: #4880FF;
 }

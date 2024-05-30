@@ -39,12 +39,13 @@
     background: white;
     height: 744px;
     border-radius: 14px;
-    padding: 60px 159px;
+    padding: 60px 10vw;
 }
 
 .account-page-content-form-wrapper {
     display: flex;
     flex-direction: column;
+    align-items: center;
     height: 100%;
 }
 
@@ -55,14 +56,16 @@
 }
 
 .account-page-content-img {
-    background-image: url(../../public/img/account-avatar-icon.svg);
-    background-size: 100px 100px;
+    background-image: url(../../public/img/account_icon.png);
+    border-radius: 50px;
+    overflow: hidden;
+    border: 1px solid #B0C7F9;
+    background-size: 115%;
     background-position: center;
     background-repeat: no-repeat;
-    background-color: #FBFCFF;
+    background-color: transparent;
     width: 80px;
     height: 80px;
-    margin-top: 60px;
 }
 
 .account-page-content-img-text {
@@ -73,156 +76,45 @@
 }
 
 .account-page-content-form-all-rows {
+    padding-top: 40px;
     display: flex;
     flex-direction: column;
+    gap: 50px;
+    width:100%;
 }
 
-.account-page-content-form-row-line-1 {
+.account-page-content-form-row-line-1,
+.account-page-content-form-row-line-2,
+.account-page-content-form-row-line-3  {
     display: flex;
     flex-direction: row;
-    gap: 80px;
+    gap: 100px;
     justify-content: center;
 }
 
-.account-page-content-form-row-line-1-item-1 {
-    margin-top: 40px;
-    width: 360px;
-    height: 86px;
+.account-page-content-form-row-line-1-item-1,
+.account-page-content-form-row-line-2-item-1,
+.account-page-content-form-row-line-3-item-1
+{
+    width: 100%;
+    max-width: 360px;
     font-size: 18px;
     font-weight: 500;
     color: #ADADAD;
 }
 
-.account-page-content-form-row-line-1-item-1-par {
-    display: flex;
-    margin-left: 0;
-    margin-bottom: 15px;
-}
-
-.account-page-content-form-row-line-1-item-1-input {
-    width: 360px;
-    height: 52px;
-    border-radius: 8px;
-    border-color: #D8D8D8;
-    border-style: solid;
-    padding-inline: 10px;
-    font-size: 16px;
-    font-weight: 500;
-}
-
-.account-page-content-form-row-line-1-item-2 {
-    margin-top: 40px;
-    width: 360px;
-    height: 86px;
-    margin-left: 160px;
-    font-size: 18px;
-    font-weight: 500;
-    color: #ADADAD;
-}
-
-.account-page-content-form-row-line-1-item-2-par {
-    display: flex;
-    margin-left: 0;
-    margin-bottom: 15px;
-}
-
-.account-page-content-form-row-line-1-item-2-input {
-    width: 360px;
-    height: 52px;
-    border-radius: 8px;
-    border-color: #D8D8D8;
-    border-style: solid;
-    padding-inline: 10px;
-    font-size: 16px;
-    font-weight: 500;
-}
-
-.account-page-content-form-row-line-2 {
-    display: flex;
-    flex-direction: row;
-    gap: 80px;
-    justify-content: center;
-    margin-top: 33px;
-}
-
-.account-page-content-form-row-line-2-item-1 {
-    margin-top: 40px;
-    width: 360px;
-    height: 86px;
-    font-size: 18px;
-    font-weight: 500;
-    color: #ADADAD;
-}
-
-.account-page-content-form-row-line-2-item-1-par {
-    display: flex;
-    margin-left: 0;
-    margin-bottom: 15px;
-}
-
-.account-page-content-form-row-line-2-item-1-input {
-    width: 360px;
-    height: 52px;
-    border-radius: 8px;
-    border-color: #D8D8D8;
-    border-style: solid;
-    padding-inline: 10px;
-    font-size: 16px;
-    font-weight: 500;
-}
-
-.account-page-content-form-row-line-2-item-2 {
-    margin-top: 40px;
-    width: 360px;
-    height: 86px;
-    margin-left: 160px;
-    font-size: 18px;
-    font-weight: 500;
-    color: #ADADAD;
-}
-
-.account-page-content-form-row-line-2-item-2-par {
-    display: flex;
-    margin-left: 0;
-    margin-bottom: 15px;
-}
-
-.account-page-content-form-row-line-2-item-2-input {
-    width: 360px;
-    height: 52px;
-    border-radius: 8px;
-    border-color: #D8D8D8;
-    border-style: solid;
-    padding-inline: 10px;
-    font-size: 16px;
-    font-weight: 500;
-}
-
-.account-page-content-form-row-line-3 {
-    display: flex;
-    flex-direction: row;
-    gap: 80px;
-    justify-content: center;
-    margin-top: 33px;
-}
-
-.account-page-content-form-row-line-3-item-1 {
-    margin-top: 40px;
-    width: 360px;
-    height: 86px;
-    font-size: 18px;
-    font-weight: 500;
-    color: #ADADAD;
-}
-
+.account-page-content-form-row-line-1-item-1-par,
+.account-page-content-form-row-line-2-item-1-par,
 .account-page-content-form-row-line-3-item-1-par {
     display: flex;
     margin-left: 0;
     margin-bottom: 15px;
 }
 
+.account-page-content-form-row-line-1-item-1-input,
+.account-page-content-form-row-line-2-item-1-input,
 .account-page-content-form-row-line-3-item-1-input {
-    width: 360px;
+    width: 100%;
     height: 52px;
     border-radius: 8px;
     border-color: #D8D8D8;
@@ -232,24 +124,28 @@
     font-weight: 500;
 }
 
+.account-page-content-form-row-line-1-item-2,
+.account-page-content-form-row-line-2-item-2,
 .account-page-content-form-row-line-3-item-2 {
-    margin-top: 40px;
-    width: 360px;
-    height: 86px;
-    margin-left: 160px;
+    width: 100%;
+    max-width: 360px;
     font-size: 18px;
     font-weight: 500;
     color: #ADADAD;
 }
 
-.account-page-content-form-row-line-3-item-2-par {
+.account-page-content-form-row-line-1-item-2-par,
+.account-page-content-form-row-line-2-item-2-par,
+.account-page-content-form-row-line-3-item-2-par{
     display: flex;
     margin-left: 0;
     margin-bottom: 15px;
 }
 
-.account-page-content-form-row-line-3-item-2-input {
-    width: 360px;
+.account-page-content-form-row-line-1-item-2-input,
+.account-page-content-form-row-line-2-item-2-input,
+.account-page-content-form-row-line-3-item-2-input{
+    width: 100%;
     height: 52px;
     border-radius: 8px;
     border-color: #D8D8D8;
@@ -259,8 +155,15 @@
     font-weight: 500;
 }
 
+
+.account-page-content-form-row-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .account-page-content-form-row-button {
-    margin-top: 60px;
+    margin-top: 40px;
     background: #4880FF;
     color: white;
     font-size: 18px;
@@ -272,6 +175,11 @@
 }
 
 .account-page-content-form-row-button:hover {
+    background-color: #4880FF;
+}
+
+.account-page-button-logout:hover {
+    color: white;
     background-color: #4880FF;
 }
 

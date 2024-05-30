@@ -1,12 +1,12 @@
 import React from 'react';
-import lessonListItem from './lessonListItem.css';
 import {useNavigate} from "react-router-dom";
+import "./lessonListItem.css";
 
 const LessonListItem = (props) => {
     const navigate = useNavigate();
 
     return (
-        <div className="post" onClick={() => navigate("/courses/my-lessons/lesson")}>
+        <div className="post" onClick={() => navigate(`${props.lesson.uuid}`)}>
             <div className="post__content">
                 <div className="my-lesson-list-item-text">{props.lesson.title}</div>
                 <div>
@@ -14,7 +14,14 @@ const LessonListItem = (props) => {
                 </div>
             </div>
             <div className="post__btns">
-                <button className="my-lesson-remove-button" onClick={(e) => props.remove(props.lesson, e)}></button>
+                {
+                    props.remove ?
+                        <button className="my-lesson-remove-button"
+                                onClick={(e) => props.remove(props.lesson, e)}></button>
+                        :
+                        <></>
+                }
+
             </div>
         </div>
     );

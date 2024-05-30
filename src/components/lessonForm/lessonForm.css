@@ -1,0 +1,28 @@
+.MyInput-lesson-container {
+    display: flex;
+    flex-direction: column;
+    width: 550px;
+    height: 550px;
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    gap: 45px;
+}
+
+.MyInput-lesson-header {
+    font-weight: 800;
+    font-size: 32px;
+    color: black;
+}
+
+.MyInput-lesson-button {
+    width: 100%;
+    max-width: 274px;
+    height: 56px;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 14px;
+    color: white;
+    background-color: #5088FF;
+    border: 1px solid #5088FF;
+}

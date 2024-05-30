@@ -1,20 +1,24 @@
 import React from 'react';
 import "./navBar.css"
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 
-const NavBar = ({hasText= true}) => {
+const NavBar = ({hasText= true, course}) => {
+
+    const navigate = useNavigate();
+
     return (
         <div className="nav-bar">
             <nav>
                 {hasText === true ?
                 (<><NavLink
-                    to="/courses/my-lessons"
+                    to={"/courses/" + course + "/lessons"}
                     className={({isActive}) => (isActive ? "link-active" : "link")}
                 >
                     Уроки
                 </NavLink>
                     <NavLink
-                    to="/courses/analyz"
+                        end
+                    to={"/courses/" + course + "/analytics"}
                     className={({isActive}) => (isActive ? "link-active" : "link")}
                  >
                 Аналитика
@@ -23,7 +27,10 @@ const NavBar = ({hasText= true}) => {
                     null
             }
             </nav>
-            <div className="nav-bar-image">Ава</div>
+            <div className="nav-bar-image" onClick={(e)=> {
+                e.preventDefault();
+                navigate("/account");
+            }}></div>
         </div>
     );
 };

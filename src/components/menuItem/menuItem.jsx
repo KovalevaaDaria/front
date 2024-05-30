@@ -11,7 +11,7 @@ const MenuItem = ({isActive, label, key, icon}) => {
                     <div className="menu-item-left"></div>
                     <div className="menu-item">
                         <div className="menu-item-icon" style={{content: `var(--${icon})`} }></div>
-                        <div className="menu-item-text" onClick={() => navigate("/my-lessons")}>{label}</div>
+                        <div className="menu-item-text" onClick={() => navigate("/courses")}>{label}</div>
                     </div>
                 </>)
                 :

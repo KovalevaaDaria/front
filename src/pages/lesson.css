@@ -17,6 +17,8 @@
 }
 
 .lesson-page-content-form {
+    display: flex;
+    justify-content: center;
     background: #ffffff;
     max-width: 100%;
     margin-top: 20px;
@@ -26,17 +28,23 @@
 }
 
 .lesson-page-content-form-container {
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
     padding: 0 65px;
 }
 
 .lesson-page-content-form-row {
+    gap: 77px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
 }
 
 .lesson-page-content-form-description {
+    width: 100%;
     display: flex;
     flex-direction: column;
     max-width: 605px;
@@ -55,16 +63,16 @@
     height: 162px;
     background-color: #F4F4F4;
     border-radius: 14px;
-    border: none;
     padding-inline: 10px;
     font-size: 16px;
     padding: 1em;
     resize: none;
+    border: 2px solid #D5D5D5;
+    font-family: "Nunito Sans", sans-serif;
 }
 
 .lesson-page-content-form-description-button {
     margin-top: 15px;
-    margin-left: 457px;
     width: 148px;
     height: 40px;
     font-weight: bold;
@@ -76,6 +84,7 @@
 }
 
 .lesson-page-content-form-materials {
+    width: 100%;
     display: flex;
     flex-direction: column;
     max-width: 328px;
@@ -89,9 +98,18 @@
     font-weight: bold;
 }
 
+.lesson-page-content-form-description-button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.lesson-page-content-form-materials-button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .lesson-page-content-form-materials-button {
     margin-top: 15px;
-    margin-left: 180px;
     width: 148px;
     height: 40px;
     font-weight: bold;
@@ -116,8 +134,9 @@
 }
 
 .lesson-page-content-form-tests-files-list {
+    margin-top: 5px;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     height: 372px;
     overflow-y: scroll;
 }
@@ -161,5 +180,24 @@
 
 .lesson-page-content-button:hover {
     background-color: #4880FF;
+}
+
+.lesson-page-content-form-description-button:hover, .lesson-page-content-form-materials-button:hover, .lesson-page-content-form-test-button:hover {
+    color: white;
+    background-color: #4880FF;
+}
+
+.lesson-page-content-form-description-input-student {
+    pointer-events: none;
+    margin-top: 17px;
+    max-width: 605px;
+    height: 162px;
+    border-radius: 14px;
+    padding-inline: 10px;
+    font-size: 17px;
+    padding: 1em;
+    resize: none;
+    border: 2px solid #D5D5D5;
+    font-family: "Nunito Sans", sans-serif;
 }
 
