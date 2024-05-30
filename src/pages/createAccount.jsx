@@ -69,7 +69,7 @@ const CreateAccount = () => {
                                    value={credentials.surname}
                                    style={(credentials.surname.length < 2 && credentials.surname) ? {borderColor: "#EF3826"} : {}}
                                    onChange={(e) => setCredentials({...credentials, surname: e.target.value})}
-                                   placeholder="Тассов"></input>
+                                   placeholder="Иванов"></input>
                         </div>
 
                         <div className="create_account_form__login">
@@ -80,7 +80,7 @@ const CreateAccount = () => {
                                    value={credentials.name}
                                    style={(credentials.name.length < 2 && credentials.name.length) ? {borderColor: "#EF3826"} : {}}
                                    onChange={(e) => setCredentials({...credentials, name: e.target.value})}
-                                   placeholder="Кирилл"></input>
+                                   placeholder="Иван"></input>
                         </div>
 
                         <div className="create_account_form__password">
@@ -90,7 +90,7 @@ const CreateAccount = () => {
                             <input autoComplete="on" type="patronymic" className="create_account_form__password__input"
                                    value={credentials.patronymic}
                                    onChange={(e) => setCredentials({...credentials, patronymic: e.target.value})}
-                                   placeholder="Леонидович"></input>
+                                   placeholder="Иванович"></input>
                         </div>
 
                         <div className="create_account_form__button">

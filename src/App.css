@@ -24,3 +24,9 @@ button {
   height: 50vw;
 
 }
+
+.loader-wrap {
+  position: relative;
+  left: 50%;
+  margin-top: 50%;
+}

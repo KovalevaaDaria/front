@@ -7,6 +7,7 @@ import ErrorForm from "./components/errorForm/errorForm";
 import MyModal from "./components/myModal/myModal";
 import {Toaster} from "react-hot-toast";
 import AuthService from "./API/services/AuthService";
+import Loader from "./components/loader/loader";
 
 export default function App() {
     const [isAuth, setIsAuth] = useState(false)
@@ -68,9 +69,9 @@ export default function App() {
 
     return (
         isLoading ?
-            <>
-                <div>Loading...</div>
-            </>
+            <div className='loader-wrap'>
+                <Loader/>
+            </div>
             :
             <AuthContext.Provider value={{
                 isAuth,
